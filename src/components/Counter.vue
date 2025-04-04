@@ -117,7 +117,7 @@ onMounted(() => {
 
     <footer
         class="w-full max-w-[72em] py-4 mt-[6em] mx-[10em] bg-[#f4f4f9] text-center text-[#000091] font-[Marianne-Medium]">
-      <p class="text-[0.9em]">&copy; 2025 Made with 🎔 by <a class="hover:underline" href="https://github.com/WissemBad"
+      <p class="text-[0.9em]">&copy; 2025 Made with ❤ by <a class="hover:underline" href="https://github.com/WissemBad"
                                                             target="_blank">Wissem.</a></p>
       <p class="text-[0.75em]"><a class="hover:underline" href="https://www.parcoursup.gouv.fr/" target="_blank">Parcoursup</a>®
         est une marque déposée propriété de l’État français.</p>
