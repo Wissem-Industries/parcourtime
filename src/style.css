@@ -2,20 +2,20 @@
 
 @font-face {
     font-family: 'Marianne-Bold';
-    src: url('./assets/fonts/Marianne-Bold.woff2') format('woff2'),
-    url('./assets/fonts/Marianne-Bold.woff') format('woff');
+    src: url('fonts/Marianne-Bold.woff2') format('woff2'),
+    url('fonts/Marianne-Bold.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Marianne-Medium';
-    src: url('./assets/fonts/Marianne-Medium.woff2') format('woff2'),
-    url('./assets/fonts/Marianne-Medium.woff') format('woff');
+    src: url('fonts/Marianne-Medium.woff2') format('woff2'),
+    url('fonts/Marianne-Medium.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Marianne-Regular';
-    src: url('./assets/fonts/Marianne-Regular.woff2') format('woff2'),
-    url('./assets/fonts/Marianne-Regular.woff') format('woff');
+    src: url('fonts/Marianne-Regular.woff2') format('woff2'),
+    url('fonts/Marianne-Regular.woff') format('woff');
 }
 
 body {
