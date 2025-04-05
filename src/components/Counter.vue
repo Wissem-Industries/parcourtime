@@ -78,8 +78,10 @@ onMounted(() => {
   <div class="min-h-screen flex flex-col justify-center items-center md:px-[4em] fade-in">
     <h1 class="text-[2.5em] text-[#000091] font-[Marianne-Bold] text-center">TEMPS AVANT LES RÉSULTATS</h1>
 
-    <img alt="Logo" class="w-1/2 max-w-[37.5em] min-w-[25em] mt-[2em] md:mt-[0.5em] h-auto object-contain"
-         src="/Parcoursup_RVB.png"/>
+    <a href="https://www.parcoursup.gouv.fr/" target="_blank">
+      <img alt="Logo" class="w-1/2 max-w-[37.5em] min-w-[25em] mt-[2em] md:mt-[0.5em] h-auto object-contain"
+           src="/Parcoursup_RVB.png"/>
+    </a>
 
     <div class="flex flex-col items-center mt-[0.75em] mb-[2em]">
       <div class="relative w-[14em] h-[14em]" :class="{'pulse': passed}">
