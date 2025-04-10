@@ -74,40 +74,39 @@ onMounted(() => {
 </script>
 
 
+<template>
+  <div class="min-h-screen flex flex-col justify-center items-center md:px-[4em] fade-in">
+    <h1 class="text-[2.5em] text-[#000091] font-[Marianne-Bold] text-center">TEMPS AVANT LES RÉSULTATS</h1>
+
+    <a href="https://www.parcoursup.gouv.fr/" target="_blank"
+       class="w-1/2 max-w-[37.5em] min-w-[25em] mt-[2em] md:mt-[0.5em] h-auto object-contain">
+      <img alt="Logo" class="w-full h-full object-contain" src="/Parcoursup_RVB.png"/>
+    </a>
+
+    <div class="flex flex-col items-center mt-[0.75em] mb-[2em]">
+      <div class="relative w-[14em] h-[14em]" :class="{'pulse': passed}">
+        <svg class="rotate-[-90deg]" height="100%" width="100%">
+          <circle class="fill-none stroke-[#d5deff]" cx="50%" cy="50%" r="6em" stroke-width="1.2em"/>
+          <circle
+              :stroke-dasharray="circumference"
+              :stroke-dashoffset="offset"
+              class="fill-none stroke-[#000091] smooth stroke-[1.2em]" cx="50%" cy="50%"
+              r="6em"
+              stroke-linecap="round"
+          />
+        </svg>
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#000091] text-[1.3em] font-[Marianne-Medium]">
+          {{ progress.toFixed(5) }}%
+        </div>
+      </div>
+    </div>
 
     <div class="flex flex-wrap gap-[1.5em] justify-center">
       <div
           v-for="(label, key) in { jours: countdown.days, heures: countdown.hours, minutes: countdown.minutes, secondes: countdown.seconds, millisecondes: countdown.milliseconds }"
           :key="key"
-          :class="{'pulse': pass<template>
-  <div class=" min-h-screen flex flex-col justify-center items-center md:px-[4em] fade-in
-      ">
-      <h1 class="text-[2.5em] text-[#000091] font-[Marianne-Bold] text-center">TEMPS AVANT LES RÉSULTATS</h1>
-
-      <a href="https://www.parcoursup.gouv.fr/" target="_blank"
-         class="w-1/2 max-w-[37.5em] min-w-[25em] mt-[2em] md:mt-[0.5em] h-auto object-contain">
-        <img alt="Logo" class="w-full h-full object-contain" src="/Parcoursup_RVB.png"/>
-      </a>
-
-      <div class="flex flex-col items-center mt-[0.75em] mb-[2em]">
-        <div class="relative w-[14em] h-[14em]" :class="{'pulse': passed}">
-          <svg class="rotate-[-90deg]" height="100%" width="100%">
-            <circle class="fill-none stroke-[#d5deff]" cx="50%" cy="50%" r="6em" stroke-width="1.2em"/>
-            <circle
-                :stroke-dasharray="circumference"
-                :stroke-dashoffset="offset"
-                class="fill-none stroke-[#000091] smooth stroke-[1.2em]" cx="50%" cy="50%"
-                r="6em"
-                stroke-linecap="round"
-            />
-          </svg>
-          <div
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#000091] text-[1.3em] font-[Marianne-Medium]">
-            {{ progress.toFixed(5) }}%
-          </div>
-        </div>
-      </div>
-      ed}"
+          :class="{'pulse': passed}"
           class="w-[8em] aspect-square bg-[#dde5ff] border-[0.25em] border-[#000091] p-[1.2em] flex flex-col justify-center items-center text-center shadow-md transition-all hover:-translate-y-[0.3em] hover:bg-[#1212ff] hover:text-white fade-in-up">
         <span class="text-[2.2em] text-[#000091] font-[Marianne-Medium] group-hover:text-white">
           {{ label }}
