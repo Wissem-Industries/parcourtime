@@ -1,53 +1,75 @@
-# Parcoursup Countdown
+# Nuxt Minimal Starter
 
-Ce projet affiche un compte à rebours pour la date des résultats de Parcoursup, avec un graphique animé et des
-conteneurs de temps affichant le nombre de jours, heures, minutes, secondes et millisecondes restants.
+Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Fonctionnalités
+## Setup
 
-- **Compte à rebours dynamique** : Affiche le temps restant jusqu'à une date donnée.
-- **Graphique animé** : Un cercle se remplissant en fonction du pourcentage du temps écoulé.
-- **Animation des conteneurs de temps** : Les éléments du compte à rebours apparaissent avec une animation fluide.
-
-## Technologies utilisées
-
-- **Vue.js** : Framework JavaScript pour la gestion de l'état et des composants.
-- **Tailwind CSS** : Utilisé pour la mise en page et les styles responsive.
-- **CSS Animations** : Pour ajouter des effets d'animation aux éléments.
-
-## Installation
-
-1. Clonez le dépôt :
+Make sure to install dependencies:
 
 ```bash
-git clone https://github.com/WissemBad/parcoursup-countdown.git
-```
-
-2. Installez les dépendances :
-
-```bash
-cd parcoursup-countdown
+# npm
 npm install
+
+# pnpm
+pnpm install
+
+# yarn
+yarn install
+
+# bun
+bun install
 ```
 
-3. Lancez le serveur de développement :
+## Development Server
+
+Start the development server on `http://localhost:3000`:
 
 ```bash
+# npm
 npm run dev
+
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
 ```
 
-Accédez à l'application via `http://localhost:3000`.
+## Production
 
-## Structure du projet
+Build the application for production:
 
-- **src/** : Contient les composants Vue.js et la logique métier.
-- **public/** : Contient les images et autres fichiers statiques.
+```bash
+# npm
+npm run build
 
-## Contribuer
+# pnpm
+pnpm build
 
-Les contributions sont les bienvenues ! Si vous avez une idée d'amélioration ou un bug à corriger, ouvrez une *issue* ou
-soumettez une *pull request*.
+# yarn
+yarn build
 
-## Licence
+# bun
+bun run build
+```
 
-Ce projet est sous licence MIT.
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
