@@ -1,58 +1,34 @@
-# Multi-stage build for Nuxt v4 application
-
-# Stage 1: Dependencies
-FROM node:20-alpine AS deps
+# Stage 1: Builder (Bun)
+FROM oven/bun:1-alpine AS builder
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+# Dépendances
+COPY package.json ./
+RUN bun install
 
-# Install dependencies
-RUN npm ci --only=production && npm cache clean --force
-
-# Stage 2: Builder
-FROM node:20-alpine AS builder
-WORKDIR /app
-
-# Copy package files
-COPY package*.json ./
-
-# Install all dependencies (including devDependencies)
-RUN npm ci
-
-# Copy source code
+# Source + build
 COPY . .
+RUN bun run build
 
-# Build the application
-RUN npm run build
-
-# Stage 3: Runner
+# Stage 2: Runner (Node)
 FROM node:20-alpine AS runner
 WORKDIR /app
 
-# Set to production environment
 ENV NODE_ENV=production
 ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=3000
 
-# Create a non-root user
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nuxtjs
 
-# Copy built application from builder
+# Copie du build
 COPY --from=builder --chown=nuxtjs:nodejs /app/.output /app/.output
 COPY --from=builder --chown=nuxtjs:nodejs /app/public /app/public
 
-# Switch to non-root user
 USER nuxtjs
-
-# Expose the port
 EXPOSE 3000
 
-# Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD node -e "require('http').get('http://localhost:3000/', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
 
-# Start the application
 CMD ["node", ".output/server/index.mjs"]
-
