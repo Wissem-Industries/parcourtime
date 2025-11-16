@@ -15,7 +15,7 @@ const checkDatePassed = (eDate: Date) => {
     return Date.now() > eDate.getTime();
 }
 
-const launchConfetti = (eDate: Date) => {
+export const launchConfetti = (eDate: Date) => {
     if (confettiInterval) return;
 
     if (!passed && checkDatePassed(eDate)) {
@@ -55,20 +55,21 @@ const launchConfetti = (eDate: Date) => {
     }
 }
 
-const handleWindowFocus = (eDate: Date) => {
-    if (passed && !confettiInterval) {
-        launchConfetti(eDate);
-    }
-};
+// Only run on client-side
+if (process.client) {
+    const handleWindowFocus = (eDate: Date) => {
+        if (passed && !confettiInterval) {
+            launchConfetti(eDate);
+        }
+    };
 
-const handleWindowBlur = () => {
-    if (confettiInterval) {
-        clearInterval(confettiInterval);
-        confettiInterval = null;
-    }
-};
+    const handleWindowBlur = () => {
+        if (confettiInterval) {
+            clearInterval(confettiInterval);
+            confettiInterval = null;
+        }
+    };
 
-window.addEventListener('focus', () => handleWindowFocus(new Date('2024-06-02T06:00:00Z')));
-window.addEventListener('blur', handleWindowBlur);
-
-export {launchConfetti};
+    window.addEventListener('focus', () => handleWindowFocus(new Date('2025-06-02T17:00:00Z')));
+    window.addEventListener('blur', handleWindowBlur);
+}
