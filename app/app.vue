@@ -8,7 +8,7 @@
 <script setup lang="ts">
 // SEO Configuration
 useHead({
-  title: 'Parcoursup Countdown - Compte à rebours 2026',
+  title: 'Parcoursup - Compte à rebours 2026',
   meta: [
     { name: 'description', content: 'Compte à rebours en temps réel avant les résultats Parcoursup 2026. Suivez toutes les étapes importantes de votre inscription dans l\'enseignement supérieur.' },
     { name: 'keywords', content: 'Parcoursup, compte à rebours, résultats 2026, admission, enseignement supérieur, France, calendrier' },
