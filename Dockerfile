@@ -1,28 +1,32 @@
-# Stage 1: Builder (Bun)
-FROM oven/bun:latest AS builder
-WORKDIR /app
+# syntax=docker/dockerfile:1.7
 
-# Dépendances
-COPY package.json ./
-RUN bun install
+# ---------- Build base ----------
+FROM oven/bun:latest AS base
+WORKDIR /application
 
-# Source + build
+# ---------- Deps ----------
+FROM base AS deps
+
+COPY package.json bun.lock* ./
+RUN bun install --frozen-lockfile
+
+# ---------- Build ----------
+FROM base AS build
+
+COPY --from=deps /application/node_modules ./node_modules
 COPY . .
+
 RUN bun run build
 
-# Stage 2: Runner (Node)
-FROM bun:latest AS runner
-WORKDIR /app
+# ---------- Runtime ----------
+FROM oven/bun:latest AS production
+WORKDIR /application
 
-# Copie du build
-COPY --from=builder --chown=nuxtjs:nodejs /app/.output /app/.output
-COPY --from=builder --chown=nuxtjs:nodejs /app/public /app/public
+COPY --from=build /application/.output ./.output
 
 ENV NODE_ENV=production
-ENV NUXT_HOST=0.0.0.0
-ENV NUXT_PORT=3000
+ENV HOST=0.0.0.0
+ENV PORT=3000
 
-USER nuxtjs
 EXPOSE 3000
-
 CMD ["bun", ".output/server/index.mjs"]
