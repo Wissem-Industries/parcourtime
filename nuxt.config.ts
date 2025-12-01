@@ -32,14 +32,11 @@ export default defineNuxtConfig({
       routeRules: {
           '/_plausible/**': {
               proxy: {
-                  to: 'https://analytics.app.com/api/**'
+                  to: 'https://analytics.wissem.pro/**'
               }
           }
-    }
+      }
   },
 
-    plausible: {
-        apiHost: 'https://analytics.wissem.pro',
-        proxy: true,
-    },
+    plausible: {proxy: true},
 })
