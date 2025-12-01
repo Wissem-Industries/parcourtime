@@ -31,9 +31,7 @@ export default defineNuxtConfig({
     },
       routeRules: {
           '/_plausible/**': {
-              proxy: {
-                  to: 'https://analytics.wissem.pro/**'
-              }
+              proxy: {to: 'https://analytics.wissem.pro/**'}
           }
       }
   },
