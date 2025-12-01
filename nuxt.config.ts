@@ -3,12 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
 
-  future: {
-    compatibilityVersion: 4
-  },
-
   css: ['~/assets/css/main.css'],
-
   modules: ['@nuxtjs/tailwindcss', '@nuxtjs/plausible'],
 
   app: {
@@ -37,7 +32,6 @@ export default defineNuxtConfig({
   },
 
     plausible: {
-        ignoredHostnames: ['localhost'],
-        proxy: true
+        apiHost: 'https://analytics.wissem.pro'
     },
 })
