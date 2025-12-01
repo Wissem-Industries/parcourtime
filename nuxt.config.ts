@@ -29,8 +29,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'node-server',
-    compressPublicAssets: true,
+    preset: 'bun',
     prerender: {
       routes: ['/'],
       crawlLinks: true
@@ -38,12 +37,7 @@ export default defineNuxtConfig({
   },
 
     plausible: {
-        // Prevent tracking on localhost
         ignoredHostnames: ['localhost'],
         proxy: true
     },
-
-  experimental: {
-    payloadExtraction: false
-  }
 })
