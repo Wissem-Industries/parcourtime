@@ -32,6 +32,7 @@ export default defineNuxtConfig({
   },
 
     plausible: {
-        apiHost: 'https://analytics.wissem.pro'
+        apiHost: 'https://analytics.wissem.pro',
+        proxy: true,
     },
 })
