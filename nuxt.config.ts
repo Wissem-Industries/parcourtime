@@ -9,9 +9,7 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
-  modules: [
-    '@nuxtjs/tailwindcss'
-  ],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/plausible'],
 
   app: {
     head: {
@@ -38,6 +36,12 @@ export default defineNuxtConfig({
       crawlLinks: true
     }
   },
+
+    plausible: {
+        // Prevent tracking on localhost
+        ignoredHostnames: ['localhost'],
+        proxy: true
+    },
 
   experimental: {
     payloadExtraction: false
