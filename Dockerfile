@@ -1,5 +1,7 @@
 # syntax=docker/dockerfile:1.7
-ARG BUN_IMAGE=oven/bun:latest
+ARG BUN_IMAGE=oven/bun:1
+ARG NODE_IMAGE=node:22-bookworm-slim
+
 
 # ---------- Build base ----------
 FROM ${BUN_IMAGE} AS base
@@ -20,7 +22,7 @@ COPY . .
 RUN bun run build
 
 # ---------- Runtime ----------
-FROM ${BUN_IMAGE} AS production
+FROM ${NODE_IMAGE} AS production
 WORKDIR /application
 
 COPY --from=build /application/.output ./.output
