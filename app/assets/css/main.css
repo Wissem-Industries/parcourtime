@@ -1,49 +1,343 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @font-face {
-    font-family: 'Marianne-Bold';
-    src: url('/fonts/Marianne-Bold.woff2') format('woff2'),
-         url('/fonts/Marianne-Bold.woff') format('woff');
+    font-family: "Marianne-Bold";
+    src: url("/fonts/Marianne-Bold.woff2") format("woff2"),
+    url("/fonts/Marianne-Bold.woff") format("woff");
     font-display: swap;
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Marianne-Medium';
-    src: url('/fonts/Marianne-Medium.woff2') format('woff2'),
-         url('/fonts/Marianne-Medium.woff') format('woff');
+    font-family: "Marianne-Medium";
+    src: url("/fonts/Marianne-Medium.woff2") format("woff2"),
+    url("/fonts/Marianne-Medium.woff") format("woff");
     font-display: swap;
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Marianne-Regular';
-    src: url('/fonts/Marianne-Regular.woff2') format('woff2'),
-         url('/fonts/Marianne-Regular.woff') format('woff');
+    font-family: "Marianne-Regular";
+    src: url("/fonts/Marianne-Regular.woff2") format("woff2"),
+    url("/fonts/Marianne-Regular.woff") format("woff");
     font-display: swap;
     font-weight: 400;
     font-style: normal;
 }
 
+:root {
+    color-scheme: light;
+    --parcourtime-surface: #f6f6f6;
+    --parcourtime-border: #ddd;
+    --parcourtime-soft-blue: #f5f7ff;
+    --parcourtime-accent: #000091;
+    --parcourtime-danger: #ce0500;
+    --parcourtime-muted: #666;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Marianne-Regular', 'Marianne', sans-serif;
+    min-width: 0;
+    font-family: "Marianne-Regular", "Marianne", sans-serif;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: #fff;
 }
 
-:root {
-    --blue-france-main: #000091;
-    --blue-france-hover: #1212ff;
-    --blue-france-active: #2323ff;
+html {
+    scroll-behavior: smooth;
+}
 
-    --bg-light: #ffffff;
-    --box-light: #dde5ff;
-    --box-border: #000091;
+.pt-page .fr-container {
+    width: min(100% - 2rem, 75rem);
+    max-width: 75rem;
+    padding-inline: 0;
+}
 
-    --text-color: #1D1D1B;
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+.pt-page {
+    overflow-x: hidden;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #f7f9ff 0, #fff 420px), #fff;
+}
+
+.pt-affiliation-banner {
+    padding-block: 0.75rem;
+    color: #fff;
+    background: var(--background-flat-error, var(--parcourtime-danger));
+    font-family: "Marianne-Bold", "Marianne", sans-serif;
+    font-size: 0.95rem;
+}
+
+.pt-hero {
+    padding-block: 2rem 1.5rem;
+}
+
+.pt-hero h1,
+.pt-hero h2,
+.pt-hero p,
+.pt-phase-card {
+    overflow-wrap: anywhere;
+}
+
+.pt-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.pt-hero-panel {
+    min-width: 0;
+    padding: 1.5rem;
+    border: 1px solid var(--parcourtime-border);
+    background: #fff;
+}
+
+.pt-countdown {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.pt-countdown__item {
+    min-width: 0;
+    padding: 1rem;
+    border-left: 4px solid var(--parcourtime-accent);
+    background: var(--parcourtime-soft-blue);
+    text-align: left;
+}
+
+.pt-countdown__value {
+    display: block;
+    color: var(--parcourtime-accent);
+    font-family: "Marianne-Bold", "Marianne", sans-serif;
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.pt-countdown__label {
+    display: block;
+    margin-top: 0.25rem;
+    color: #3a3a3a;
+    font-size: 0.875rem;
+}
+
+.pt-section {
+    padding-block: 2rem;
+}
+
+.pt-section--muted {
+    background: var(--parcourtime-surface);
+}
+
+.pt-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    align-items: end;
+}
+
+.pt-toolbar > *,
+.pt-hero-grid > * {
+    min-width: 0;
+}
+
+.pt-phase-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+}
+
+.pt-phase-card {
+    height: 100%;
+    border-left: 4px solid transparent;
+}
+
+.pt-phase-card--active {
+    border-left-color: var(
+            --border-active-blue-france,
+            var(--parcourtime-accent)
+    );
+    background: var(--background-alt-blue-france, var(--parcourtime-soft-blue));
+}
+
+.pt-phase-card--finished {
+    border-left-color: var(--border-disabled-grey, #929292);
+    background: repeating-linear-gradient(
+            -45deg,
+            rgb(0 0 0 / 0.025) 0,
+            rgb(0 0 0 / 0.025) 0.5rem,
+            transparent 0.5rem,
+            transparent 1rem
+    ),
+    var(--background-alt-grey, #f6f6f6);
+}
+
+.pt-phase-card--unconfirmed {
+    border-left-color: var(--border-plain-warning, #b34000);
+}
+
+.pt-phase-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.pt-milestone-list {
+    padding-left: 1.25rem;
+}
+
+.pt-source-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    padding-left: 0;
+    list-style: none;
+}
+
+.pt-progress {
+    position: relative;
+    width: 100%;
+    height: 1.5rem;
+    overflow: hidden;
+    border-radius: 0;
+    border: 1px solid var(--border-default-grey, #c5c5c5);
+    background: var(--background-contrast-grey, #eee);
+}
+
+.pt-progress-card {
+    padding: 1rem;
+    border-left: 4px solid var(--border-active-blue-france, var(--parcourtime-accent));
+    background: var(--background-alt-blue-france, var(--parcourtime-soft-blue));
+}
+
+.pt-progress-card__header {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.pt-progress-card__header strong {
+    color: var(--text-action-high-blue-france, var(--parcourtime-accent));
+    font-family: "Marianne-Bold", "Marianne", sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1;
+}
+
+.pt-progress__bar {
+    height: 100%;
+    background: var(
+            --background-action-high-blue-france,
+            var(--parcourtime-accent)
+    );
+    transition: width 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: width;
+}
+
+.pt-muted {
+    color: var(--parcourtime-muted);
+}
+
+.pt-footer-note {
+    max-width: 46rem;
+}
+
+.pt-footer-bottom {
+    align-items: center;
+}
+
+.pt-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    align-items: center;
+    width: 100%;
+}
+
+.pt-footer-links li {
+    margin: 0;
+}
+
+.pt-footer-signature {
+    color: var(--text-action-high-blue-france, var(--parcourtime-accent));
+    font-family: "Marianne-Bold", "Marianne", sans-serif;
+}
+
+@media (min-width: 48em) {
+    .pt-footer-links li:last-child {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 47.99em) {
+    .pt-page .fr-container {
+        width: 100%;
+        padding-inline: 1rem;
+    }
+
+    .pt-hero .fr-display--xs {
+        font-size: 2.25rem;
+        line-height: 1.15;
+    }
+
+    .pt-hero-panel {
+        padding: 1rem;
+    }
+
+    .pt-countdown__item {
+        padding: 0.875rem;
+    }
+
+    .pt-progress-card__header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (min-width: 48em) {
+    .pt-hero {
+        padding-block: 3.5rem 2.5rem;
+    }
+
+    .pt-hero-grid {
+        grid-template-columns: minmax(0, 1.35fr) minmax(20rem, 0.65fr);
+    }
+
+    .pt-toolbar {
+        grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem);
+    }
+
+    .pt-phase-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pt-progress__bar {
+        transition: none;
+    }
+}
+
+@media (min-width: 78em) {
+    .pt-phase-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }

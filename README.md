@@ -1,84 +1,102 @@
 # ParcourTime
 
-<div align="center">
+ParcourTime est une application Nuxt qui rend le calendrier Parcoursup plus lisible : phase actuelle, prochaine
+échéance, compte à rebours et calendrier complet sourcé.
 
-![Nuxt](https://img.shields.io/badge/Nuxt-00DC82?style=for-the-badge&logo=nuxt.js&logoColor=white)
-![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Bun](https://img.shields.io/badge/Bun-000000?style=for-the-badge&logo=bun&logoColor=white)
+Le projet est indépendant et non officiel. Les dates doivent toujours pouvoir être vérifiées depuis les sources
+institutionnelles.
 
-**[🔗 Démo en ligne](https://parcourtime.wissem.pro)**
+## Stack
 
-</div>
+- Nuxt 4
+- Vue 3
+- TypeScript strict
+- DSFR officiel et VueDsfr
+- Bun
+- Vitest pour la logique calendrier
 
-## À propos
-
-Application web de compte à rebours en temps réel pour Parcoursup 2026. ParcourTime affiche le temps restant jusqu'aux résultats d'admission et suit toutes les dates importantes du processus de candidature dans l'enseignement supérieur français.
-
-L'application propose un indicateur de progression circulaire montrant l'avancement dans l'année académique, accompagné de compteurs détaillés pour les prochaines échéances.
-
-## Fonctionnalités
-
-- Compte à rebours en temps réel avec précision à la milliseconde
-- Indicateur circulaire de progression annuelle
-- Timeline complète des phases Parcoursup
-- Design responsive optimisé mobile et desktop
-- Optimisation SEO avec métadonnées Open Graph et Twitter Card
-- Animation de confettis lors des franchissements d'étapes
-- Accessibilité renforcée avec labels ARIA et HTML sémantique
-
-## Stack technique
-
-- **Framework** : Nuxt 4
-- **Frontend** : Vue 3 avec Composition API
-- **Styling** : TailwindCSS
-- **Typographie** : Police Marianne (typographie officielle de l'État français)
-- **Animation** : canvas-confetti
-- **Package Manager** : Bun
-- **Déploiement** : Serveur Node avec compression et pré-rendu
-
-## Installation
+## Lancer le projet
 
 ```bash
-# Installer les dépendances
 bun install
-```
-
-## Développement
-
-```bash
-# Démarrer le serveur de développement sur http://localhost:3000
 bun run dev
 ```
 
-## Production
+Le serveur de développement démarre par défaut sur `http://localhost:3000`.
+
+## Vérifier la qualité
 
 ```bash
-# Compiler l'application
+bun run test
+bun run typecheck
+bun run lint
+bun run format:check
 bun run build
+```
 
-# Prévisualiser le build de production
+## Structure
+
+```text
+app/
+  components/calendar/      Composants de countdown, timeline, statuts
+  components/layout/        Header et footer
+  composables/useCountdown  Timer client léger
+  data/parcoursup/          Campagnes Parcoursup JSON + adaptateur typé
+  pages/index.vue           Page principale
+  types/parcoursup.ts       Types métier
+  utils/calendar.ts         Logique testable hors composants
+tests/unit/                 Tests Vitest
+docs/update-campaign.md     Guide de mise à jour annuelle
+```
+
+## Mettre à jour les dates
+
+Toutes les dates sont dans `app/data/parcoursup/campaigns.json`. Le fichier `campaigns.ts` ne fait qu’exposer ces
+données avec les types de l’application.
+
+Règles :
+
+- utiliser les sources officielles Parcoursup ou ministérielles ;
+- ne jamais hardcoder une date dans un composant ;
+- ne jamais inventer une date manquante ;
+- utiliser `certainty: 'to_confirm'` lorsqu’une date n’est pas publiée ;
+- renseigner les sources dans `sources` et les relier via `sourceIds` ;
+- écrire les dates en ISO avec offset Europe/Paris.
+
+Voir aussi `docs/update-campaign.md`.
+
+## Sources actuelles
+
+- https://www.parcoursup.gouv.fr/calendrier
+- https://www.parcoursup.gouv.fr/decouvrir-parcoursup/parcoursup-c-est-quoi-1061
+- https://www.parcoursup.gouv.fr/contenus/tout-savoir-sur-la-phase-complementaire-3462
+- https://www.parcoursup.gouv.fr/candidater-sur-parcoursup/fin-de-la-phase-d-admission-principale-3477
+
+## Déploiement
+
+```bash
+bun run build
 bun run preview
 ```
 
-## Structure du projet
+Le build Nuxt est configuré pour un preset Bun et pré-rend la page d’accueil.
 
+## Docker
+
+Construire et lancer l’image avec Docker Compose :
+
+```bash
+docker compose up --build -d
 ```
-app/
-├── app.vue                 # Point d'entrée principal
-├── components/
-│   └── counter.vue         # Compteur et cercle de progression
-├── composables/
-│   └── useDates.ts         # Configuration du calendrier Parcoursup
-└── utils/
-    └── confetti.ts         # Effets de célébration
+
+L’application écoute alors sur `http://localhost:3000`.
+
+Arrêter le service :
+
+```bash
+docker compose down
 ```
 
 ## Licence
 
-Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
-
-## Auteur
-
-**Wissem** - [WissemBad](https://github.com/WissemBad)
+MIT. Voir `LICENSE`.

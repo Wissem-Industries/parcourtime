@@ -1,7 +1,8 @@
 # syntax=docker/dockerfile:1.7
+ARG BUN_IMAGE=oven/bun:1
 
 # ---------- Build base ----------
-FROM oven/bun:latest AS base
+FROM ${BUN_IMAGE} AS base
 WORKDIR /application
 
 # ---------- Deps ----------
@@ -19,7 +20,7 @@ COPY . .
 RUN bun run build
 
 # ---------- Runtime ----------
-FROM oven/bun:latest AS production
+FROM ${BUN_IMAGE} AS production
 WORKDIR /application
 
 COPY --from=build /application/.output ./.output

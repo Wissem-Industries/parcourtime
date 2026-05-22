@@ -1,0 +1,258 @@
+[
+  {
+    "id": "2025-2026",
+    "label": "Campagne 2025-2026",
+    "timezone": "Europe/Paris",
+    "lastUpdated": "2026-05-22",
+    "sources": [
+      {
+        "id": "calendrier-2026",
+        "title": "Calendrier Parcoursup 2026",
+        "url": "https://www.parcoursup.gouv.fr/calendrier",
+        "retrievedAt": "2026-05-22"
+      },
+      {
+        "id": "definition-parcoursup",
+        "title": "Parcoursup, c’est quoi ?",
+        "url": "https://www.parcoursup.gouv.fr/decouvrir-parcoursup/parcoursup-c-est-quoi-1061",
+        "retrievedAt": "2026-05-22"
+      },
+      {
+        "id": "phase-complementaire-2026",
+        "title": "Tout savoir sur la phase complémentaire",
+        "url": "https://www.parcoursup.gouv.fr/contenus/tout-savoir-sur-la-phase-complementaire-3462",
+        "retrievedAt": "2026-05-22"
+      },
+      {
+        "id": "fin-admission-2026",
+        "title": "Fin de la phase d’admission principale",
+        "url": "https://www.parcoursup.gouv.fr/candidater-sur-parcoursup/fin-de-la-phase-d-admission-principale-3477",
+        "retrievedAt": "2026-05-22"
+      }
+    ],
+    "phases": [
+      {
+        "id": "information",
+        "order": 1,
+        "title": "Je m’informe et découvre les formations",
+        "shortDescription": "Préparation du projet d’orientation, découverte des formations et ouverture de la carte Parcoursup.",
+        "start": "2025-10-01T00:00:00+02:00",
+        "end": "2026-01-18T23:59:59+01:00",
+        "displayDate": "Octobre 2025 à janvier 2026",
+        "certainty": "estimated",
+        "sourceIds": [
+          "calendrier-2026"
+        ],
+        "milestones": [
+          {
+            "id": "carte-formations",
+            "title": "Découverte de la carte des formations Parcoursup 2026",
+            "date": "2025-12-17T00:00:00+01:00",
+            "displayDate": "17 décembre 2025",
+            "certainty": "official",
+            "sourceIds": [
+              "calendrier-2026"
+            ],
+            "importance": "secondary"
+          }
+        ]
+      },
+      {
+        "id": "voeux",
+        "order": 2,
+        "title": "Je m’inscris et je formule mes vœux",
+        "shortDescription": "Création du dossier candidat et formulation des vœux, sans obligation de les classer.",
+        "start": "2026-01-19T00:00:00+01:00",
+        "end": "2026-03-12T23:59:59+01:00",
+        "displayDate": "Du 19 janvier au 12 mars 2026",
+        "certainty": "official",
+        "sourceIds": [
+          "calendrier-2026"
+        ],
+        "milestones": [
+          {
+            "id": "dernier-jour-voeux",
+            "title": "Dernier jour pour formuler les vœux",
+            "date": "2026-03-12T23:59:59+01:00",
+            "displayDate": "12 mars 2026 à 23h59",
+            "certainty": "official",
+            "sourceIds": [
+              "calendrier-2026"
+            ],
+            "importance": "primary"
+          }
+        ]
+      },
+      {
+        "id": "confirmation",
+        "order": 3,
+        "title": "Je finalise mon dossier et je confirme mes vœux",
+        "shortDescription": "Compléter les éléments demandés par les formations et confirmer chaque vœu.",
+        "start": "2026-03-13T00:00:00+01:00",
+        "end": "2026-04-01T23:59:59+02:00",
+        "displayDate": "Jusqu’au 1er avril 2026 à 23h59",
+        "certainty": "official",
+        "sourceIds": [
+          "calendrier-2026"
+        ],
+        "milestones": [
+          {
+            "id": "confirmation-voeux",
+            "title": "Dernier jour pour compléter le dossier et confirmer les vœux",
+            "date": "2026-04-01T23:59:59+02:00",
+            "displayDate": "1er avril 2026 à 23h59",
+            "certainty": "official",
+            "sourceIds": [
+              "calendrier-2026"
+            ],
+            "importance": "primary"
+          }
+        ]
+      },
+      {
+        "id": "examen",
+        "order": 4,
+        "title": "Les formations examinent les dossiers",
+        "shortDescription": "Les établissements étudient les candidatures confirmées avant l’ouverture des admissions.",
+        "start": "2026-04-02T00:00:00+02:00",
+        "end": "2026-06-01T23:59:59+02:00",
+        "displayDate": "Avril à mai 2026",
+        "certainty": "estimated",
+        "sourceIds": [
+          "calendrier-2026"
+        ]
+      },
+      {
+        "id": "admission-principale",
+        "order": 5,
+        "title": "Je reçois les réponses des formations et je décide",
+        "shortDescription": "Les propositions d’admission arrivent progressivement et doivent être traitées dans les délais indiqués.",
+        "start": "2026-06-02T00:00:00+02:00",
+        "end": "2026-07-11T23:59:59+02:00",
+        "displayDate": "Du 2 juin au 11 juillet 2026",
+        "certainty": "official",
+        "sourceIds": [
+          "calendrier-2026",
+          "fin-admission-2026"
+        ],
+        "milestones": [
+          {
+            "id": "debut-admission",
+            "title": "Début de la phase d’admission principale",
+            "date": "2026-06-02T00:00:00+02:00",
+            "displayDate": "2 juin 2026",
+            "certainty": "official",
+            "sourceIds": [
+              "calendrier-2026"
+            ],
+            "importance": "primary"
+          },
+          {
+            "id": "classement-attente",
+            "title": "Classement des vœux en attente",
+            "date": "2026-06-05T00:00:00+02:00",
+            "displayDate": "Du 5 au 8 juin 2026",
+            "certainty": "official",
+            "sourceIds": [
+              "calendrier-2026"
+            ],
+            "importance": "secondary"
+          },
+          {
+            "id": "ouverture-caes",
+            "title": "Ouverture de l’accompagnement CAES",
+            "date": "2026-07-01T00:00:00+02:00",
+            "displayDate": "1er juillet 2026",
+            "shortDescription": "Accompagnement possible pour les candidats sans proposition adaptée.",
+            "certainty": "official",
+            "sourceIds": [
+              "calendrier-2026"
+            ],
+            "importance": "secondary"
+          },
+          {
+            "id": "fin-admission-principale",
+            "title": "Fin de la phase principale",
+            "date": "2026-07-11T23:59:59+02:00",
+            "displayDate": "11 juillet 2026",
+            "certainty": "official",
+            "sourceIds": [
+              "calendrier-2026",
+              "fin-admission-2026"
+            ],
+            "importance": "primary"
+          }
+        ]
+      },
+      {
+        "id": "phase-complementaire",
+        "order": 6,
+        "title": "Phase d’admission complémentaire",
+        "shortDescription": "Formuler de nouveaux vœux dans les formations qui disposent encore de places.",
+        "start": "2026-06-11T00:00:00+02:00",
+        "end": "2026-09-10T23:59:59+02:00",
+        "displayDate": "Du 11 juin au 10 septembre 2026",
+        "certainty": "official",
+        "sourceIds": [
+          "calendrier-2026",
+          "phase-complementaire-2026"
+        ],
+        "milestones": [
+          {
+            "id": "debut-complementaire",
+            "title": "Début de la phase complémentaire",
+            "date": "2026-06-11T00:00:00+02:00",
+            "displayDate": "11 juin 2026",
+            "certainty": "official",
+            "sourceIds": [
+              "calendrier-2026",
+              "phase-complementaire-2026"
+            ],
+            "importance": "primary"
+          },
+          {
+            "id": "fin-voeux-complementaire",
+            "title": "Dernier jour pour formuler des vœux en phase complémentaire",
+            "date": "2026-09-08T23:59:59+02:00",
+            "displayDate": "8 septembre 2026",
+            "certainty": "official",
+            "sourceIds": [
+              "phase-complementaire-2026"
+            ],
+            "importance": "primary"
+          },
+          {
+            "id": "fin-complementaire",
+            "title": "Fin de la phase complémentaire",
+            "date": "2026-09-10T23:59:59+02:00",
+            "displayDate": "10 septembre 2026",
+            "certainty": "official",
+            "sourceIds": [
+              "calendrier-2026",
+              "phase-complementaire-2026"
+            ],
+            "importance": "primary"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2026-2027",
+    "label": "Campagne 2026-2027",
+    "timezone": "Europe/Paris",
+    "lastUpdated": "2026-05-22",
+    "sources": [],
+    "phases": [
+      {
+        "id": "calendrier-a-confirmer",
+        "order": 1,
+        "title": "Calendrier officiel à confirmer",
+        "shortDescription": "Les dates officielles de la campagne 2026-2027 ne sont pas encore publiées dans les sources vérifiées.",
+        "displayDate": "Dates à confirmer",
+        "certainty": "to_confirm",
+        "sourceIds": []
+      }
+    ]
+  }
+]
