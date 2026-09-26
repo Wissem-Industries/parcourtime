@@ -7,9 +7,9 @@
 
 <p align="center">
   <a href="https://ci.wissem.pro/repos/4"><img alt="Woodpecker CI" src="https://ci.wissem.pro/api/badges/4/status.svg" /></a>
-  <a href="https://github.com/WissemBad/ParcourTime/releases"><img alt="Dernière version" src="https://img.shields.io/github/v/tag/WissemBad/ParcourTime?sort=semver&label=version" /></a>
+  <a href="https://github.com/Wissem-Industries/ParcourTime/releases"><img alt="Dernière version" src="https://img.shields.io/github/v/tag/Wissem-Industries/ParcourTime?sort=semver&label=version" /></a>
   <a href="https://ghcr.io/wissem-industries/parcourtime"><img alt="Image de production GHCR" src="https://img.shields.io/badge/GHCR-production-2496ED?logo=docker&logoColor=white" /></a>
-  <a href="LICENSE"><img alt="Licence MIT" src="https://img.shields.io/github/license/WissemBad/ParcourTime" /></a>
+  <a href="LICENSE"><img alt="Licence MIT" src="https://img.shields.io/github/license/Wissem-Industries/ParcourTime" /></a>
 </p>
 
 <p align="center">
@@ -41,7 +41,7 @@ Nuxt 4 · Vue 3 · TypeScript · DSFR · VueDsfr · Bun · Biome · Vitest
 Prérequis : [Bun 1.4 ou plus récent](https://bun.sh/).
 
 ```bash
-git clone https://github.com/WissemBad/ParcourTime.git
+git clone https://github.com/Wissem-Industries/ParcourTime.git
 cd ParcourTime
 bun install --frozen-lockfile
 bun run dev
@@ -71,7 +71,7 @@ L’application est construite avec Docker et publiée dans le registre GitHub C
 ghcr.io/wissem-industries/parcourtime:latest
 ```
 
-Les tags de version (`v1.0.0`, par exemple) déclenchent le pipeline Woodpecker : contrôles qualité, publication de l’image versionnée et mise à jour de `latest`, puis déploiement de production via Dokploy.
+Les tags de version (`v1.0.0`, par exemple) déclenchent le pipeline Woodpecker : contrôles qualité, publication de l’image versionnée et mise à jour de `latest`, puis déploiement de production via Dokploy. Chaque publication est suivie dans l’environnement GitHub Deployments `production`. Les titres de release suivent le format `ParcourTime vX.Y.Z`.
 
 Pour lancer le conteneur localement :
 

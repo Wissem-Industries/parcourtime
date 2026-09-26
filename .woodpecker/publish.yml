@@ -3,12 +3,26 @@ when:
     ref: refs/tags/v*
 
 steps:
+  - name: deployment-start
+    image: oven/bun:1.4.2-alpine
+    environment:
+      GITHUB_PACKAGES_TOKEN:
+        from_secret: github_packages_token
+      DEPLOYMENT_ENVIRONMENT: production
+      DEPLOYMENT_PRODUCTION: "true"
+      DEPLOYMENT_TASK: deploy:production
+    commands:
+      - bun .woodpecker/github-deployment.mjs start
+
   - name: check
     image: oven/bun:1.4.2-alpine
     commands:
       - bun install --frozen-lockfile
       - bun run check
       - test "$${CI_COMMIT_TAG#v}" = "$(sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' package.json | head -n 1)"
+
+    depends_on:
+      - deployment-start
 
   - name: publish-image
     image: gcr.io/kaniko-project/executor:v1.23.2-debug
@@ -33,3 +47,26 @@ steps:
       - curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 30 --request POST "$${DOKPLOY_WEBHOOK_URL}"
     depends_on:
       - publish-image
+
+  - name: deployment-success
+    image: oven/bun:1.4.2-alpine
+    environment:
+      GITHUB_PACKAGES_TOKEN:
+        from_secret: github_packages_token
+      DEPLOYMENT_STATUS_DESCRIPTION: Mise à jour Dokploy déclenchée
+      DEPLOYMENT_URL: https://parcourtime.wissem.pro
+    commands:
+      - bun .woodpecker/github-deployment.mjs success
+    depends_on:
+      - deploy-production
+
+  - name: deployment-failure
+    image: oven/bun:1.4.2-alpine
+    environment:
+      GITHUB_PACKAGES_TOKEN:
+        from_secret: github_packages_token
+      DEPLOYMENT_STATUS_DESCRIPTION: Échec du pipeline de publication
+    commands:
+      - bun .woodpecker/github-deployment.mjs failure
+    when:
+      - status: [failure]
