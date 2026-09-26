@@ -1,6 +1,5 @@
 when:
-  - event: push
-  - event: pull_request
+  - event: [push, pull_request]
 
 steps:
   - name: check
