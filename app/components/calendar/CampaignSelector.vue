@@ -30,6 +30,7 @@ const emit = defineEmits<{
           v-for="campaign in campaigns"
           :key="campaign.id"
           :value="campaign.id"
+          :selected="campaign.id === modelValue"
       >
         {{ campaign.label }}
       </option>
