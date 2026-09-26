@@ -4,14 +4,17 @@ when:
 
 steps:
   - name: check
-    image: oven/bun:1.4.2-alpine
+    image: oven/bun:alpine
     commands:
       - bun install --frozen-lockfile
       - bun run check
 
   - name: docker
-    image: gcr.io/kaniko-project/executor:v1.23.2-debug
-    commands:
-      - /kaniko/executor --context "$${CI_WORKSPACE}" --dockerfile Dockerfile --no-push
+    image: woodpeckerci/plugin-docker-buildx:6.1.1
+    privileged: true
+    settings:
+      dry_run: true
+      repo: ghcr.io/wissem-industries/parcourtime
+      dockerfile: Dockerfile
     depends_on:
       - check

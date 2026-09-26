@@ -3,7 +3,7 @@
   "configVersion": 0,
   "workspaces": {
     "": {
-      "name": "Parcoursup-Countdown",
+      "name": "@wissem-industries/parcourtime",
       "dependencies": {
         "@gouvfr/dsfr": "1.14.4",
         "@gouvminint/vue-dsfr": "8.16.1",

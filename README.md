@@ -1,86 +1,81 @@
 # ParcourTime
 
 <p align="center">
-  <strong>Le calendrier Parcoursup, clair et à jour.</strong><br />
-  Consultez les étapes de la campagne, les prochaines échéances et l’avancement du calendrier en un coup d’œil.
+  <strong>A clear, accessible Parcoursup calendar.</strong><br />
+  Follow application phases, upcoming deadlines and campaign progress.
 </p>
 
 <p align="center">
   <a href="https://ci.wissem.pro/repos/4"><img alt="Woodpecker CI" src="https://ci.wissem.pro/api/badges/4/status.svg" /></a>
-  <a href="https://github.com/Wissem-Industries/ParcourTime/releases"><img alt="Dernière version" src="https://img.shields.io/github/v/tag/Wissem-Industries/ParcourTime?sort=semver&label=version" /></a>
-  <a href="https://ghcr.io/wissem-industries/parcourtime"><img alt="Image de production GHCR" src="https://img.shields.io/badge/GHCR-production-2496ED?logo=docker&logoColor=white" /></a>
-  <a href="LICENSE"><img alt="Licence MIT" src="https://img.shields.io/github/license/Wissem-Industries/ParcourTime" /></a>
+  <a href="https://github.com/Wissem-Industries/ParcourTime/releases"><img alt="Latest version" src="https://img.shields.io/github/v/tag/Wissem-Industries/ParcourTime?sort=semver&label=version" /></a>
+  <a href="https://ghcr.io/wissem-industries/parcourtime"><img alt="Production image on GHCR" src="https://img.shields.io/badge/GHCR-production-2496ED?logo=docker&logoColor=white" /></a>
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/github/license/Wissem-Industries/ParcourTime" /></a>
 </p>
 
 <p align="center">
   <img alt="Nuxt 4" src="https://img.shields.io/badge/Nuxt-4-00DC82?logo=nuxt.js&logoColor=white" />
   <img alt="Vue 3" src="https://img.shields.io/badge/Vue-3-4FC08D?logo=vuedotjs&logoColor=white" />
   <img alt="Bun 1.4" src="https://img.shields.io/badge/Bun-1.4-FBF0DF?logo=bun&logoColor=000" />
-  <img alt="Biome" src="https://img.shields.io/badge/Biome-2-60A5FA?logo=biome&logoColor=white" />
+  <img alt="Biome 2" src="https://img.shields.io/badge/Biome-2-60A5FA?logo=biome&logoColor=white" />
 </p>
 
-ParcourTime est un projet de **Wissem’s Industries**. Le service est indépendant et non affilié à Parcoursup ni au ministère de l’Enseignement supérieur.
+ParcourTime is an independent calendar maintained by **Wissem’s Industries**.
+It is not affiliated with Parcoursup or the French Ministry of Higher Education.
+Dates for a future campaign remain estimates until official publication and are
+marked as such. Always confirm official dates before taking action.
 
-> Les dates d’une campagne à venir peuvent être estimées tant que le calendrier officiel n’est pas publié. Elles sont alors signalées comme prévisionnelles dans l’application. Vérifiez toujours les dates officielles avant d’effectuer une démarche.
+## Features
 
-## Fonctionnalités
+- Select a campaign and share it through the URL.
+- See the current phase, next deadline, countdown and overall progress.
+- Browse past, current and upcoming phases in chronological order.
+- Compare versioned campaigns from different years.
+- Use the French-language interface on mobile or with a keyboard.
 
-- La campagne la plus récente est sélectionnée par défaut et reste partageable dans l’URL.
-- La phase en cours, la prochaine échéance et un compte à rebours lisible.
-- La progression globale du calendrier, y compris avant son ouverture.
-- Une vue chronologique des phases passées, en cours et à venir.
-- Des campagnes versionnées pour comparer les calendriers d’une année à l’autre.
-- Une interface française adaptée au mobile et accessible au clavier.
+## Technology
 
-## Technologies
+Nuxt 4 · Vue 3 · TypeScript · DSFR · VueDsfr · Bun 1.4 · Biome 2 · Vitest
 
-Nuxt 4 · Vue 3 · TypeScript · DSFR · VueDsfr · Bun · Biome · Vitest
+## Development
 
-## Développement
+Requirements: [Bun 1.4 or later](https://bun.sh/).
 
-Prérequis : [Bun 1.4 ou plus récent](https://bun.sh/).
-
-```bash
+```sh
 git clone https://github.com/Wissem-Industries/ParcourTime.git
 cd ParcourTime
 bun install --frozen-lockfile
 bun run dev
 ```
 
-L’application est disponible sur `http://localhost:3000`.
+The application is available at `http://localhost:3000`.
 
-## Contrôles qualité
+## Quality checks
 
-```bash
+```sh
 bun run check
 ```
 
-Cette commande exécute Biome, les tests unitaires, la vérification TypeScript et le build de production.
+This runs Biome, unit tests, TypeScript checks and a production build.
 
-## Calendriers de campagne
+## Campaign data
 
-Les calendriers sont versionnés dans [`app/data/parcoursup/campaigns.json`](app/data/parcoursup/campaigns.json). Les dates estimées sont marquées comme telles et peuvent être révisées lorsque le calendrier officiel est publié.
-
-Le guide de mise à jour annuelle se trouve dans [`docs/update-campaign.md`](docs/update-campaign.md).
+Campaign calendars are versioned in
+[`app/data/parcoursup/campaigns.json`](app/data/parcoursup/campaigns.json).
+See [`docs/update-campaign.md`](docs/update-campaign.md) for the annual update
+process.
 
 ## Production
 
-L’application est construite avec Docker et publiée dans le registre GitHub Container Registry :
+Woodpecker checks pushes and pull requests. A `v*` tag that matches
+`package.json.version` runs the release checks, publishes the versioned image and
+`latest` to `ghcr.io/wissem-industries/parcourtime`, then triggers Dokploy and
+creates a GitHub Release. The production container listens on port `3000`.
+Confirm the Dokploy service points at the published image before releasing.
 
-```text
-ghcr.io/wissem-industries/parcourtime:latest
-```
-
-Les tags de version (`v1.0.0`, par exemple) déclenchent le pipeline Woodpecker : contrôles qualité, publication de l’image versionnée et mise à jour de `latest`, puis déploiement de production via Dokploy. Chaque publication est suivie dans l’environnement GitHub Deployments `production`. Les titres de release suivent le format `ParcourTime vX.Y.Z`.
-
-Pour lancer le conteneur localement :
-
-```bash
+```sh
 docker compose up --build -d
 ```
 
-L’application écoute sur le port `3000`.
+## License
 
-## Licence
-
-ParcourTime est distribué sous licence [MIT](LICENSE).
+MIT. See [LICENSE](LICENSE).
