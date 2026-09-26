@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type {Campaign} from "~/types/parcoursup";
-import {campaigns, defaultCampaignId, getCampaignById,} from "~/data/parcoursup/campaigns";
+import { campaigns, defaultCampaignId, getCampaignById } from '~/data/parcoursup/campaigns'
+import type { Campaign } from '~/types/parcoursup'
 import {
   formatPhaseRange,
   getCampaignProgress,
@@ -8,73 +8,63 @@ import {
   getNextDeadline,
   getPhaseStatus,
   hasUnconfirmedDates,
-} from "~/utils/calendar";
+} from '~/utils/calendar'
 
-const selectedCampaignId = ref(defaultCampaignId);
-const fallbackCampaign = campaigns[0] as Campaign;
-const campaignOptions = campaigns as Campaign[];
+const selectedCampaignId = ref(defaultCampaignId)
+const fallbackCampaign = campaigns[0] as Campaign
+const campaignOptions = campaigns as Campaign[]
 const selectedCampaign = computed(
-    () => getCampaignById(selectedCampaignId.value) ?? fallbackCampaign,
-);
+  () => getCampaignById(selectedCampaignId.value) ?? fallbackCampaign,
+)
 
-const clockTarget = computed<Date | null>(() => null);
-const {now} = useCountdown(clockTarget);
+const clockTarget = computed<Date | null>(() => null)
+const { now } = useCountdown(clockTarget)
 
-const currentPhase = computed(() =>
-    getCurrentPhase(selectedCampaign.value, now.value),
-);
-const nextDeadline = computed(() =>
-    getNextDeadline(selectedCampaign.value, now.value),
-);
-const campaignProgress = computed(() =>
-    getCampaignProgress(selectedCampaign.value, now.value),
-);
-const animatedCampaignProgress = ref(0);
+const currentPhase = computed(() => getCurrentPhase(selectedCampaign.value, now.value))
+const nextDeadline = computed(() => getNextDeadline(selectedCampaign.value, now.value))
+const campaignProgress = computed(() => getCampaignProgress(selectedCampaign.value, now.value))
+const animatedCampaignProgress = ref(0)
 const campaignProgressLabel = computed(() =>
-    campaignProgress.value === null
-        ? null
-        : campaignProgress.value.toLocaleString("fr-FR", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        }),
-);
-const hasDatesToConfirm = computed(() =>
-    hasUnconfirmedDates(selectedCampaign.value),
-);
+  campaignProgress.value === null
+    ? null
+    : campaignProgress.value.toLocaleString('fr-FR', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }),
+)
+const hasDatesToConfirm = computed(() => hasUnconfirmedDates(selectedCampaign.value))
 const currentStatus = computed(() =>
-    currentPhase.value
-        ? getPhaseStatus(currentPhase.value, now.value)
-        : "outside_calendar",
-);
+  currentPhase.value ? getPhaseStatus(currentPhase.value, now.value) : 'outside_calendar',
+)
 
 watch(
-    campaignProgress,
-    (progress) => {
-      if (progress === null) {
-        animatedCampaignProgress.value = 0;
-        return;
-      }
+  campaignProgress,
+  (progress) => {
+    if (progress === null) {
+      animatedCampaignProgress.value = 0
+      return
+    }
 
-      if (!import.meta.client) return;
+    if (!import.meta.client) return
 
-      requestAnimationFrame(() => {
-        animatedCampaignProgress.value = progress;
-      });
-    },
-    {immediate: true},
-);
+    requestAnimationFrame(() => {
+      animatedCampaignProgress.value = progress
+    })
+  },
+  { immediate: true },
+)
 
 useSeoMeta({
   title: () => `ParcourTime - ${selectedCampaign.value.label}`,
   description: () =>
-      `Compte à rebours et calendrier sourcé des phases Parcoursup pour ${selectedCampaign.value.label}.`,
+    `Compte à rebours et calendrier indicatif des phases Parcoursup pour ${selectedCampaign.value.label}.`,
   ogTitle: () => `ParcourTime - ${selectedCampaign.value.label}`,
   ogDescription: () =>
-      "Suivez les grandes échéances Parcoursup avec des dates centralisées, sourcées et faciles à vérifier.",
-  ogImage: "/Parcoursup_Banner.jpg",
-  ogUrl: "https://parcourtime.wissem.pro",
-  twitterCard: "summary_large_image",
-});
+    'Suivez les grandes échéances Parcoursup avec des dates centralisées et clairement qualifiées.',
+  ogImage: '/Parcoursup_Banner.jpg',
+  ogUrl: 'https://parcourtime.wissem.pro',
+  twitterCard: 'summary_large_image',
+})
 </script>
 
 <template>
@@ -97,7 +87,7 @@ useSeoMeta({
                 Le calendrier Parcoursup, lisible au premier coup d’œil
               </h1>
               <p class="fr-text--lg fr-mb-0">
-                ParcourTime suit les phases officielles, affiche la phase en
+                ParcourTime suit les phases de la campagne, affiche la phase en
                 cours et met en avant la prochaine échéance importante.
               </p>
             </div>
@@ -112,10 +102,9 @@ useSeoMeta({
               v-if="hasDatesToConfirm"
               class="fr-alert fr-alert--warning fr-mb-4w"
           >
-            <h2 class="fr-alert__title">Certaines dates restent à confirmer</h2>
+            <h2 class="fr-alert__title">Calendrier prévisionnel</h2>
             <p>
-              Les campagnes futures sont affichées sans inventer de calendrier.
-              Les dates seront ajoutées uniquement après publication officielle.
+              Les dates de cette campagne sont des estimations. Elles seront mises à jour après publication du calendrier officiel.
             </p>
           </div>
 
@@ -231,10 +220,9 @@ useSeoMeta({
 
             <div class="fr-col-12 fr-col-md-5">
               <div class="fr-callout">
-                <h3 class="fr-callout__title">Sources officielles</h3>
+                <h3 class="fr-callout__title">Calendrier officiel</h3>
                 <p class="fr-callout__text">
-                  Les dates de la campagne sélectionnée sont centralisées dans
-                  une source typée et associées à des liens officiels.
+                  Consultez le calendrier institutionnel avant toute démarche importante.
                 </p>
                 <ul class="pt-source-list">
                   <li

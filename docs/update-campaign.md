@@ -7,10 +7,10 @@ Les dates Parcoursup changent chaque année. ParcourTime les garde dans une sour
 ## Règles
 
 - Utiliser en priorité `parcoursup.gouv.fr`, le ministère ou un document institutionnel.
-- Ne pas inventer de date. Si une date n’est pas publiée, utiliser `certainty: 'to_confirm'` et ne pas renseigner
+- Pour une campagne future, utiliser `certainty: 'estimated'` pour toute date estimée. Si aucune estimation n’est possible, utiliser `certainty: 'to_confirm'` et ne pas renseigner
   `start`, `end` ou `date`.
 - Renseigner les dates en ISO avec offset Europe/Paris, par exemple `2026-03-12T23:59:59+01:00`.
-- Ajouter les sources dans `sources`, puis référencer leurs identifiants dans `sourceIds`.
+- Pour les dates officielles, ajouter les sources dans `sources`, puis référencer leurs identifiants dans `sourceIds`. Les estimations gardent ces listes vides.
 - Mettre à jour `lastUpdated` avec la date de vérification.
 - Ne pas modifier `campaigns.ts` pour ajouter une campagne : il sert seulement d’adaptateur typé.
 
@@ -18,7 +18,7 @@ Les dates Parcoursup changent chaque année. ParcourTime les garde dans une sour
 
 1. Dupliquer la structure d’une campagne existante dans `campaigns`.
 2. Changer `id`, `label`, `lastUpdated` et les sources.
-3. Remplir les phases dont les dates sont officiellement publiées.
+3. Remplir les phases avec les dates officielles ou des estimations clairement qualifiées.
 4. Laisser les phases non publiées en `to_confirm`.
 5. Lancer les vérifications :
 

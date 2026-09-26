@@ -1,0 +1,24 @@
+when:
+  - event: tag
+    ref: refs/tags/v*
+
+steps:
+  - name: check
+    image: oven/bun:1.4.2-alpine
+    commands:
+      - bun install --frozen-lockfile
+      - bun run check
+      - test "$${CI_COMMIT_TAG#v}" = "$(sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' package.json | head -n 1)"
+
+  - name: publish-image
+    image: gcr.io/kaniko-project/executor:v1.23.2-debug
+    environment:
+      GITHUB_PACKAGES_TOKEN:
+        from_secret: github_packages_token
+    commands:
+      - mkdir -p /kaniko/.docker
+      - AUTH=$(printf '%s:%s' 'WissemBad' "$${GITHUB_PACKAGES_TOKEN}" | base64 | tr -d '\n')
+      - printf '{"auths":{"ghcr.io":{"auth":"%s"}}}\n' "$${AUTH}" > /kaniko/.docker/config.json
+      - /kaniko/executor --context "$${CI_WORKSPACE}" --dockerfile Dockerfile --destination "ghcr.io/wissem-industries/parcourtime:$${CI_COMMIT_TAG#v}" --destination ghcr.io/wissem-industries/parcourtime:latest
+    depends_on:
+      - check

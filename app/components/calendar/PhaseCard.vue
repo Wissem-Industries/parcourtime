@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import type {ParcoursupPhase} from "~/types/parcoursup";
-import {formatPhaseRange, getPhaseStatus} from "~/utils/calendar";
+import type { ParcoursupPhase } from '~/types/parcoursup'
+import { formatPhaseRange, getPhaseStatus } from '~/utils/calendar'
 
 const props = defineProps<{
-  phase: ParcoursupPhase;
-  now: Date;
-}>();
+  phase: ParcoursupPhase
+  now: Date
+}>()
 
-const status = computed(() => getPhaseStatus(props.phase, props.now));
+const status = computed(() => getPhaseStatus(props.phase, props.now))
 
 const cardClass = computed(() => ({
-  "pt-phase-card--active": status.value === "active",
-  "pt-phase-card--finished": status.value === "finished",
-  "pt-phase-card--unconfirmed": status.value === "date_unconfirmed",
-}));
+  'pt-phase-card--active': status.value === 'active',
+  'pt-phase-card--finished': status.value === 'finished',
+  'pt-phase-card--unconfirmed': status.value === 'date_unconfirmed',
+}))
 </script>
 
 <template>

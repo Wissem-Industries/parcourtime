@@ -1,38 +1,36 @@
 {
-  "name": "parcourtime",
+  "name": "@wissem-industries/parcourtime",
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "lint": "eslint .",
+    "build": "bun --bun nuxt build",
+    "dev": "bun --bun nuxt dev",
+    "lint": "biome check .",
     "start": "bun .output/server/index.mjs",
     "test": "vitest run",
-    "typecheck": "nuxt typecheck",
+    "typecheck": "bun --bun nuxt typecheck",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "preview": "bun --bun nuxt preview",
+    "postinstall": "bun --bun nuxt prepare",
+    "lint:fix": "biome check --write .",
+    "check": "bun run lint && bun run test && bun run typecheck && bun run build"
   },
   "dependencies": {
     "@gouvfr/dsfr": "1.14.4",
     "@gouvminint/vue-dsfr": "8.16.1",
     "@nuxtjs/plausible": "2.0.1",
-    "baseline-browser-mapping": "^2.10.31",
-    "caniuse-lite": "^1.0.30001793",
     "nuxt": "4.4.6",
     "vue": "3.5.34"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "@types/node": "^24.10.1",
-    "@nuxt/eslint": "1.15.2",
     "@nuxt/test-utils": "4.0.3",
-    "eslint": "10.4.0",
-    "prettier": "3.8.3",
     "typescript": "^5.9.3",
     "vitest": "4.1.7",
-    "vue-tsc": "3.3.1"
-  }
+    "vue-tsc": "3.3.1",
+    "@biomejs/biome": "^2.5.14"
+  },
+  "version": "1.0.0",
+  "packageManager": "bun@1.4.2"
 }

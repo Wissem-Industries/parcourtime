@@ -1,0 +1,10 @@
+when:
+  - event: push
+  - event: pull_request
+
+steps:
+  - name: check
+    image: oven/bun:1.4.2-alpine
+    commands:
+      - bun install --frozen-lockfile
+      - bun run check

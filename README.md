@@ -1,10 +1,9 @@
 # ParcourTime
 
 ParcourTime est une application Nuxt qui rend le calendrier Parcoursup plus lisible : phase actuelle, prochaine
-échéance, compte à rebours et calendrier complet sourcé.
+échéance, compte à rebours et calendrier complet.
 
-Le projet est indépendant et non officiel. Les dates doivent toujours pouvoir être vérifiées depuis les sources
-institutionnelles.
+Projet de Wissem’s Industries, indépendant et non officiel. La campagne 2026-2027 est prévisionnelle ; vérifiez les échéances officielles avant toute démarche.
 
 ## Stack
 
@@ -13,6 +12,7 @@ institutionnelles.
 - TypeScript strict
 - DSFR officiel et VueDsfr
 - Bun
+- Biome pour le lint et le formatage
 - Vitest pour la logique calendrier
 
 ## Lancer le projet
@@ -30,7 +30,6 @@ Le serveur de développement démarre par défaut sur `http://localhost:3000`.
 bun run test
 bun run typecheck
 bun run lint
-bun run format:check
 bun run build
 ```
 
@@ -56,11 +55,11 @@ données avec les types de l’application.
 
 Règles :
 
-- utiliser les sources officielles Parcoursup ou ministérielles ;
+- qualifier explicitement chaque date comme officielle ou estimée ;
 - ne jamais hardcoder une date dans un composant ;
-- ne jamais inventer une date manquante ;
+- estimer la prochaine campagne à partir du rythme connu, puis la réviser lors de la publication officielle ;
 - utiliser `certainty: 'to_confirm'` lorsqu’une date n’est pas publiée ;
-- renseigner les sources dans `sources` et les relier via `sourceIds` ;
+- conserver les liens institutionnels pour les campagnes officielles ; ne pas afficher de source pour les estimations ;
 - écrire les dates en ISO avec offset Europe/Paris.
 
 Voir aussi `docs/update-campaign.md`.

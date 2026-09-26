@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import type {Deadline} from "~/types/parcoursup";
+import type { Deadline } from '~/types/parcoursup'
 
 const props = defineProps<{
-  deadline: Deadline | null;
-}>();
+  deadline: Deadline | null
+}>()
 
-const target = computed(() => props.deadline?.date ?? null);
-const {remaining} = useCountdown(target);
+const target = computed(() => props.deadline?.date ?? null)
+const { remaining } = useCountdown(target)
 
 const items = computed(() => [
-  {label: "jours", value: remaining.value.days},
-  {label: "heures", value: remaining.value.hours},
-  {label: "minutes", value: remaining.value.minutes},
-  {label: "secondes", value: remaining.value.seconds},
-]);
+  { label: 'jours', value: remaining.value.days },
+  { label: 'heures', value: remaining.value.hours },
+  { label: 'minutes', value: remaining.value.minutes },
+  { label: 'secondes', value: remaining.value.seconds },
+])
 </script>
 
 <template>

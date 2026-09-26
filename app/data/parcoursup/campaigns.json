@@ -40,9 +40,7 @@
         "end": "2026-01-18T23:59:59+01:00",
         "displayDate": "Octobre 2025 à janvier 2026",
         "certainty": "estimated",
-        "sourceIds": [
-          "calendrier-2026"
-        ],
+        "sourceIds": ["calendrier-2026"],
         "milestones": [
           {
             "id": "carte-formations",
@@ -50,9 +48,7 @@
             "date": "2025-12-17T00:00:00+01:00",
             "displayDate": "17 décembre 2025",
             "certainty": "official",
-            "sourceIds": [
-              "calendrier-2026"
-            ],
+            "sourceIds": ["calendrier-2026"],
             "importance": "secondary"
           }
         ]
@@ -66,9 +62,7 @@
         "end": "2026-03-12T23:59:59+01:00",
         "displayDate": "Du 19 janvier au 12 mars 2026",
         "certainty": "official",
-        "sourceIds": [
-          "calendrier-2026"
-        ],
+        "sourceIds": ["calendrier-2026"],
         "milestones": [
           {
             "id": "dernier-jour-voeux",
@@ -76,9 +70,7 @@
             "date": "2026-03-12T23:59:59+01:00",
             "displayDate": "12 mars 2026 à 23h59",
             "certainty": "official",
-            "sourceIds": [
-              "calendrier-2026"
-            ],
+            "sourceIds": ["calendrier-2026"],
             "importance": "primary"
           }
         ]
@@ -92,9 +84,7 @@
         "end": "2026-04-01T23:59:59+02:00",
         "displayDate": "Jusqu’au 1er avril 2026 à 23h59",
         "certainty": "official",
-        "sourceIds": [
-          "calendrier-2026"
-        ],
+        "sourceIds": ["calendrier-2026"],
         "milestones": [
           {
             "id": "confirmation-voeux",
@@ -102,9 +92,7 @@
             "date": "2026-04-01T23:59:59+02:00",
             "displayDate": "1er avril 2026 à 23h59",
             "certainty": "official",
-            "sourceIds": [
-              "calendrier-2026"
-            ],
+            "sourceIds": ["calendrier-2026"],
             "importance": "primary"
           }
         ]
@@ -118,9 +106,7 @@
         "end": "2026-06-01T23:59:59+02:00",
         "displayDate": "Avril à mai 2026",
         "certainty": "estimated",
-        "sourceIds": [
-          "calendrier-2026"
-        ]
+        "sourceIds": ["calendrier-2026"]
       },
       {
         "id": "admission-principale",
@@ -131,10 +117,7 @@
         "end": "2026-07-11T23:59:59+02:00",
         "displayDate": "Du 2 juin au 11 juillet 2026",
         "certainty": "official",
-        "sourceIds": [
-          "calendrier-2026",
-          "fin-admission-2026"
-        ],
+        "sourceIds": ["calendrier-2026", "fin-admission-2026"],
         "milestones": [
           {
             "id": "debut-admission",
@@ -142,9 +125,7 @@
             "date": "2026-06-02T00:00:00+02:00",
             "displayDate": "2 juin 2026",
             "certainty": "official",
-            "sourceIds": [
-              "calendrier-2026"
-            ],
+            "sourceIds": ["calendrier-2026"],
             "importance": "primary"
           },
           {
@@ -153,9 +134,7 @@
             "date": "2026-06-05T00:00:00+02:00",
             "displayDate": "Du 5 au 8 juin 2026",
             "certainty": "official",
-            "sourceIds": [
-              "calendrier-2026"
-            ],
+            "sourceIds": ["calendrier-2026"],
             "importance": "secondary"
           },
           {
@@ -165,9 +144,7 @@
             "displayDate": "1er juillet 2026",
             "shortDescription": "Accompagnement possible pour les candidats sans proposition adaptée.",
             "certainty": "official",
-            "sourceIds": [
-              "calendrier-2026"
-            ],
+            "sourceIds": ["calendrier-2026"],
             "importance": "secondary"
           },
           {
@@ -176,10 +153,7 @@
             "date": "2026-07-11T23:59:59+02:00",
             "displayDate": "11 juillet 2026",
             "certainty": "official",
-            "sourceIds": [
-              "calendrier-2026",
-              "fin-admission-2026"
-            ],
+            "sourceIds": ["calendrier-2026", "fin-admission-2026"],
             "importance": "primary"
           }
         ]
@@ -193,10 +167,7 @@
         "end": "2026-09-10T23:59:59+02:00",
         "displayDate": "Du 11 juin au 10 septembre 2026",
         "certainty": "official",
-        "sourceIds": [
-          "calendrier-2026",
-          "phase-complementaire-2026"
-        ],
+        "sourceIds": ["calendrier-2026", "phase-complementaire-2026"],
         "milestones": [
           {
             "id": "debut-complementaire",
@@ -204,10 +175,7 @@
             "date": "2026-06-11T00:00:00+02:00",
             "displayDate": "11 juin 2026",
             "certainty": "official",
-            "sourceIds": [
-              "calendrier-2026",
-              "phase-complementaire-2026"
-            ],
+            "sourceIds": ["calendrier-2026", "phase-complementaire-2026"],
             "importance": "primary"
           },
           {
@@ -216,9 +184,7 @@
             "date": "2026-09-08T23:59:59+02:00",
             "displayDate": "8 septembre 2026",
             "certainty": "official",
-            "sourceIds": [
-              "phase-complementaire-2026"
-            ],
+            "sourceIds": ["phase-complementaire-2026"],
             "importance": "primary"
           },
           {
@@ -227,10 +193,7 @@
             "date": "2026-09-10T23:59:59+02:00",
             "displayDate": "10 septembre 2026",
             "certainty": "official",
-            "sourceIds": [
-              "calendrier-2026",
-              "phase-complementaire-2026"
-            ],
+            "sourceIds": ["calendrier-2026", "phase-complementaire-2026"],
             "importance": "primary"
           }
         ]
@@ -241,17 +204,147 @@
     "id": "2026-2027",
     "label": "Campagne 2026-2027",
     "timezone": "Europe/Paris",
-    "lastUpdated": "2026-05-22",
+    "lastUpdated": "2026-09-26",
     "sources": [],
     "phases": [
       {
-        "id": "calendrier-a-confirmer",
+        "id": "information",
         "order": 1,
-        "title": "Calendrier officiel à confirmer",
-        "shortDescription": "Les dates officielles de la campagne 2026-2027 ne sont pas encore publiées dans les sources vérifiées.",
-        "displayDate": "Dates à confirmer",
-        "certainty": "to_confirm",
+        "title": "Je m’informe et découvre les formations",
+        "shortDescription": "Préparation du projet d’orientation et découverte des formations.",
+        "start": "2026-10-01T00:00:00+02:00",
+        "end": "2027-01-17T23:59:59+01:00",
+        "displayDate": "D’octobre 2026 à mi-janvier 2027 (estimation)",
+        "certainty": "estimated",
+        "sourceIds": [],
+        "milestones": [
+          {
+            "id": "carte-formations",
+            "title": "Ouverture estimée de la carte des formations",
+            "date": "2026-12-16T00:00:00+01:00",
+            "displayDate": "Vers le 16 décembre 2026",
+            "certainty": "estimated",
+            "sourceIds": [],
+            "importance": "secondary"
+          }
+        ]
+      },
+      {
+        "id": "voeux",
+        "order": 2,
+        "title": "Je m’inscris et je formule mes vœux",
+        "shortDescription": "Création du dossier candidat et formulation des vœux.",
+        "start": "2027-01-18T00:00:00+01:00",
+        "end": "2027-03-11T23:59:59+01:00",
+        "displayDate": "Vers le 18 janvier au 11 mars 2027",
+        "certainty": "estimated",
+        "sourceIds": [],
+        "milestones": [
+          {
+            "id": "dernier-jour-voeux",
+            "title": "Fin estimée de la formulation des vœux",
+            "date": "2027-03-11T23:59:59+01:00",
+            "displayDate": "Vers le 11 mars 2027",
+            "certainty": "estimated",
+            "sourceIds": [],
+            "importance": "primary"
+          }
+        ]
+      },
+      {
+        "id": "confirmation",
+        "order": 3,
+        "title": "Je finalise mon dossier et je confirme mes vœux",
+        "shortDescription": "Compléter le dossier et confirmer chaque vœu.",
+        "start": "2027-03-12T00:00:00+01:00",
+        "end": "2027-04-01T23:59:59+02:00",
+        "displayDate": "Jusqu’au début avril 2027 (estimation)",
+        "certainty": "estimated",
+        "sourceIds": [],
+        "milestones": [
+          {
+            "id": "confirmation-voeux",
+            "title": "Fin estimée de la confirmation des vœux",
+            "date": "2027-04-01T23:59:59+02:00",
+            "displayDate": "Vers le 1er avril 2027",
+            "certainty": "estimated",
+            "sourceIds": [],
+            "importance": "primary"
+          }
+        ]
+      },
+      {
+        "id": "examen",
+        "order": 4,
+        "title": "Les formations examinent les dossiers",
+        "shortDescription": "Les établissements étudient les candidatures confirmées.",
+        "start": "2027-04-02T00:00:00+02:00",
+        "end": "2027-05-31T23:59:59+02:00",
+        "displayDate": "Avril à mai 2027 (estimation)",
+        "certainty": "estimated",
         "sourceIds": []
+      },
+      {
+        "id": "admission-principale",
+        "order": 5,
+        "title": "Je reçois les réponses des formations et je décide",
+        "shortDescription": "Les propositions d’admission arrivent progressivement.",
+        "start": "2027-06-01T00:00:00+02:00",
+        "end": "2027-07-10T23:59:59+02:00",
+        "displayDate": "Début juin à mi-juillet 2027 (estimation)",
+        "certainty": "estimated",
+        "sourceIds": [],
+        "milestones": [
+          {
+            "id": "debut-admission",
+            "title": "Début estimé de la phase principale",
+            "date": "2027-06-01T00:00:00+02:00",
+            "displayDate": "Vers le 1er juin 2027",
+            "certainty": "estimated",
+            "sourceIds": [],
+            "importance": "primary"
+          },
+          {
+            "id": "fin-admission-principale",
+            "title": "Fin estimée de la phase principale",
+            "date": "2027-07-10T23:59:59+02:00",
+            "displayDate": "Vers le 10 juillet 2027",
+            "certainty": "estimated",
+            "sourceIds": [],
+            "importance": "primary"
+          }
+        ]
+      },
+      {
+        "id": "phase-complementaire",
+        "order": 6,
+        "title": "Phase d’admission complémentaire",
+        "shortDescription": "Formuler de nouveaux vœux dans les formations où il reste des places.",
+        "start": "2027-06-10T00:00:00+02:00",
+        "end": "2027-09-09T23:59:59+02:00",
+        "displayDate": "Mi-juin à début septembre 2027 (estimation)",
+        "certainty": "estimated",
+        "sourceIds": [],
+        "milestones": [
+          {
+            "id": "debut-complementaire",
+            "title": "Début estimé de la phase complémentaire",
+            "date": "2027-06-10T00:00:00+02:00",
+            "displayDate": "Vers le 10 juin 2027",
+            "certainty": "estimated",
+            "sourceIds": [],
+            "importance": "primary"
+          },
+          {
+            "id": "fin-complementaire",
+            "title": "Fin estimée de la phase complémentaire",
+            "date": "2027-09-09T23:59:59+02:00",
+            "displayDate": "Vers le 9 septembre 2027",
+            "certainty": "estimated",
+            "sourceIds": [],
+            "importance": "primary"
+          }
+        ]
       }
     ]
   }

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import type {Campaign} from "~/types/parcoursup";
-import {sortPhases} from "~/utils/calendar";
+import type { Campaign } from '~/types/parcoursup'
+import { sortPhases } from '~/utils/calendar'
 
 const props = defineProps<{
-  campaign: Campaign;
-  now: Date;
-}>();
+  campaign: Campaign
+  now: Date
+}>()
 
-const phases = computed(() => sortPhases(props.campaign.phases));
+const phases = computed(() => sortPhases(props.campaign.phases))
 </script>
 
 <template>

@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import type {Campaign} from "~/types/parcoursup";
+import type { Campaign } from '~/types/parcoursup'
 
 defineProps<{
-  campaigns: Campaign[];
-  modelValue: string;
-}>();
+  campaigns: Campaign[]
+  modelValue: string
+}>()
 
 const emit = defineEmits<{
-  "update:modelValue": [value: string];
-}>();
+  'update:modelValue': [value: string]
+}>()
 </script>
 
 <template>

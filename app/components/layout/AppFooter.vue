@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type {Campaign} from "~/types/parcoursup";
+import type { Campaign } from '~/types/parcoursup'
 
 defineProps<{
-  campaign: Campaign;
-}>();
+  campaign: Campaign
+}>()
 </script>
 
 <template>
@@ -11,13 +11,11 @@ defineProps<{
     <div class="fr-container">
       <div class="fr-footer__body">
         <div class="fr-footer__brand fr-enlarge-link">
-          <p class="fr-logo">République<br/>Française</p>
+          <strong>ParcourTime</strong>
         </div>
         <div class="fr-footer__content">
           <p class="fr-footer__content-desc pt-footer-note">
-            ParcourTime est un projet indépendant, non officiel. Les dates sont
-            reprises depuis les sources institutionnelles indiquées et doivent
-            toujours être vérifiées sur Parcoursup en cas de doute.
+            ParcourTime est un projet de Wissem’s Industries, indépendant et non officiel. Les dates prévisionnelles sont des estimations : vérifiez le calendrier Parcoursup avant toute démarche.
           </p>
           <p class="fr-text--sm fr-mb-0">
             Dernière mise à jour des données : {{ campaign.lastUpdated }}.
@@ -54,7 +52,7 @@ defineProps<{
                 target="_blank"
                 rel="noopener noreferrer"
             >
-              Made by Wissem with &lt;3
+              Wissem’s Industries
             </a>
           </li>
         </ul>
