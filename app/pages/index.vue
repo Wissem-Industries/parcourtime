@@ -166,8 +166,8 @@ useSeoMeta({
                 </div>
 
                 <p class="fr-text--sm fr-mt-2w fr-mb-0">
-                  Avancement entre le début du calendrier et la fin de la
-                  campagne sélectionnée.
+                  La progression commence 30 jours avant l’ouverture de la
+                  campagne et avance jusqu’à sa fin.
                 </p>
               </div>
             </section>

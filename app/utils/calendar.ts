@@ -17,6 +17,7 @@ const dateTimeFormatter = new Intl.DateTimeFormat('fr-FR', {
   timeStyle: 'short',
   timeZone: 'Europe/Paris',
 })
+const PRE_CAMPAIGN_WINDOW_MS = 30 * 24 * 60 * 60 * 1000
 
 export const parseDate = (value?: string) => {
   if (!value) return null
@@ -79,8 +80,27 @@ export const getUpcomingDeadlines = (campaign: Campaign, now: Date) =>
       return a.importance === 'primary' ? -1 : 1
     })
 
-export const getNextDeadline = (campaign: Campaign, now: Date) =>
-  getUpcomingDeadlines(campaign, now)[0] ?? null
+export const getNextDeadline = (campaign: Campaign, now: Date) => {
+  const firstPhase = sortPhases(campaign.phases)
+    .map((phase) => ({ phase, start: parseDate(phase.start) }))
+    .filter((entry): entry is { phase: ParcoursupPhase; start: Date } => Boolean(entry.start))
+    .sort((a, b) => a.start.getTime() - b.start.getTime())[0]
+
+  if (firstPhase && now < firstPhase.start) {
+    return {
+      id: `${firstPhase.phase.id}-start`,
+      title: 'Début estimé de la campagne',
+      date: firstPhase.start,
+      displayDate: formatDateTime(firstPhase.start),
+      phaseId: firstPhase.phase.id,
+      phaseTitle: firstPhase.phase.title,
+      sourceIds: firstPhase.phase.sourceIds,
+      importance: 'primary' as const,
+    }
+  }
+
+  return getUpcomingDeadlines(campaign, now)[0] ?? null
+}
 
 export const getCampaignBounds = (campaign: Campaign) => {
   const ranges = campaign.phases
@@ -104,10 +124,11 @@ export const getCampaignProgress = (campaign: Campaign, now: Date) => {
   const bounds = getCampaignBounds(campaign)
   if (!bounds) return null
 
-  const total = bounds.end.getTime() - bounds.start.getTime()
+  const progressStart = new Date(bounds.start.getTime() - PRE_CAMPAIGN_WINDOW_MS)
+  const total = bounds.end.getTime() - progressStart.getTime()
   if (total <= 0) return null
 
-  const elapsed = now.getTime() - bounds.start.getTime()
+  const elapsed = now.getTime() - progressStart.getTime()
   return Math.min(100, Math.max(0, (elapsed / total) * 100))
 }
 
