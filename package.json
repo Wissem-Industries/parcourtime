@@ -1,5 +1,6 @@
 {
   "name": "@wissem-industries/parcourtime",
+  "description": "Independent Parcoursup calendar for application phases and deadlines.",
   "type": "module",
   "private": true,
   "scripts": {

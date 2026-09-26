@@ -4,7 +4,7 @@ when:
 
 steps:
   - name: deployment-start
-    image: oven/bun:1.4.2-alpine
+    image: oven/bun:alpine
     environment:
       GITHUB_PACKAGES_TOKEN:
         from_secret: github_packages_token
@@ -15,7 +15,7 @@ steps:
       - bun .woodpecker/github-deployment.mjs start
 
   - name: check
-    image: oven/bun:1.4.2-alpine
+    image: oven/bun:alpine
     commands:
       - bun install --frozen-lockfile
       - bun run check
@@ -25,31 +25,32 @@ steps:
       - deployment-start
 
   - name: publish-image
-    image: gcr.io/kaniko-project/executor:v1.23.2-debug
-    environment:
-      GITHUB_PACKAGES_TOKEN:
+    image: woodpeckerci/plugin-kaniko:2.3.2
+    settings:
+      registry: ghcr.io
+      repo: ghcr.io/wissem-industries/parcourtime
+      username: WissemBad
+      password:
         from_secret: github_packages_token
-    commands:
-      - mkdir -p /kaniko/.docker
-      - AUTH=$(printf '%s:%s' 'WissemBad' "$${GITHUB_PACKAGES_TOKEN}" | base64 | tr -d '\n')
-      - printf '{"auths":{"ghcr.io":{"auth":"%s"}}}\n' "$${AUTH}" > /kaniko/.docker/config.json
-      - /kaniko/executor --context "$${CI_WORKSPACE}" --dockerfile Dockerfile --destination "ghcr.io/wissem-industries/parcourtime:$${CI_COMMIT_TAG#v}" --destination ghcr.io/wissem-industries/parcourtime:latest
-      - rm -f /kaniko/.docker/config.json
+      tags:
+        - ${CI_COMMIT_TAG}
+        - latest
     depends_on:
       - check
 
   - name: deploy-production
-    image: curlimages/curl:8.16.0
+    image: oven/bun:alpine
     environment:
       DOKPLOY_WEBHOOK_URL:
         from_secret: dokploy_webhook_url
     commands:
-      - curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 30 --request POST "$${DOKPLOY_WEBHOOK_URL}"
+      - >-
+        bun -e 'let error; for (let attempt = 0; attempt < 4; attempt++) { try { const response = await fetch(process.env.DOKPLOY_WEBHOOK_URL, { method: "POST", signal: AbortSignal.timeout(30000) }); if (response.ok) process.exit(0); error = new Error("Dokploy returned " + response.status) } catch (caught) { error = caught } await Bun.sleep(1000 * (attempt + 1)) } throw error'
     depends_on:
       - publish-image
 
   - name: deployment-success
-    image: oven/bun:1.4.2-alpine
+    image: oven/bun:alpine
     environment:
       GITHUB_PACKAGES_TOKEN:
         from_secret: github_packages_token
@@ -61,7 +62,7 @@ steps:
       - deploy-production
 
   - name: deployment-failure
-    image: oven/bun:1.4.2-alpine
+    image: oven/bun:alpine
     environment:
       GITHUB_PACKAGES_TOKEN:
         from_secret: github_packages_token
