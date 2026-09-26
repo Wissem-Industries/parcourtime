@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { campaigns } from '../../app/data/parcoursup/campaigns'
+import { campaigns, defaultCampaignId } from '../../app/data/parcoursup/campaigns'
 import {
   getCurrentPhase,
   getNextDeadline,
@@ -12,6 +12,9 @@ const campaign2026 = campaigns.find((campaign) => campaign.id === '2025-2026')!
 const campaign2027 = campaigns.find((campaign) => campaign.id === '2026-2027')!
 
 describe('calendar utilities', () => {
+  it('opens the most recent campaign by default', () => {
+    expect(defaultCampaignId).toBe([...campaigns].sort((a, b) => b.id.localeCompare(a.id))[0]?.id)
+  })
   it('sorts phases chronologically by order', () => {
     const phases = sortPhases([...campaign2026.phases].reverse())
 

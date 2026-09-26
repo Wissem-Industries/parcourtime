@@ -8,3 +8,10 @@ steps:
     commands:
       - bun install --frozen-lockfile
       - bun run check
+
+  - name: docker
+    image: gcr.io/kaniko-project/executor:v1.23.2-debug
+    commands:
+      - /kaniko/executor --context "$${CI_WORKSPACE}" --dockerfile Dockerfile --no-push
+    depends_on:
+      - check

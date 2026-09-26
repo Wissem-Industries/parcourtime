@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.7
-ARG BUN_IMAGE=oven/bun:latest
+ARG BUN_IMAGE=oven/bun:1.4.2-alpine
 
 # ---------- Build base ----------
 FROM ${BUN_IMAGE} AS base
@@ -23,11 +23,14 @@ RUN bun run build
 FROM ${BUN_IMAGE} AS production
 WORKDIR /application
 
-COPY --from=build /application/.output ./.output
+COPY --from=build --chown=bun:bun /application/.output ./.output
 
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
 ENV PORT=3000
+ENV NITRO_HOST=0.0.0.0
+ENV NITRO_PORT=3000
 
+USER bun
 EXPOSE 3000
 CMD ["bun", ".output/server/index.mjs"]
