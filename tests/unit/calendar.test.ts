@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { campaigns, defaultCampaignId } from '../../app/data/parcoursup/campaigns'
 import {
+  getCampaignProgress,
   getCurrentPhase,
   getNextDeadline,
   getPhaseStatus,
@@ -38,13 +39,14 @@ describe('calendar utilities', () => {
   })
 
   it('marks the estimated future campaign as provisional', () => {
-    const now = new Date('2026-05-22T12:00:00+02:00')
+    const now = new Date('2026-09-26T12:00:00+02:00')
     const phase = campaign2027.phases[0]!
 
     expect(hasUnconfirmedDates(campaign2027)).toBe(true)
     expect(getPhaseStatus(phase, now)).toBe('upcoming')
     expect(getCurrentPhase(campaign2027, now)).toBeNull()
-    expect(getNextDeadline(campaign2027, now)?.id).toBe('carte-formations')
+    expect(getNextDeadline(campaign2027, now)?.id).toBe('information-start')
+    expect(getCampaignProgress(campaign2027, now)).toBeGreaterThan(0)
   })
 
   it('handles dates before and after a phase', () => {
