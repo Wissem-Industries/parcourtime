@@ -25,8 +25,7 @@ steps:
       - deployment-start
 
   - name: publish-image
-    image: woodpeckerci/plugin-docker-buildx:6.1.1
-    privileged: true
+    image: woodpeckerci/plugin-kaniko:2.3.2
     settings:
       registry: ghcr.io
       repo: ghcr.io/wissem-industries/parcourtime

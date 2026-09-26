@@ -9,10 +9,9 @@ steps:
       - bun run check
 
   - name: docker
-    image: woodpeckerci/plugin-docker-buildx:6.1.1
-    privileged: true
+    image: woodpeckerci/plugin-kaniko:2.3.2
     settings:
-      dry_run: true
+      dry-run: true
       repo: ghcr.io/wissem-industries/parcourtime
       dockerfile: Dockerfile
     depends_on:
