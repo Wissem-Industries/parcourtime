@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <a href="https://ci.wissem.pro/repos/4"><img alt="Woodpecker CI" src="https://ci.wissem.pro/api/badges/4/status.svg" /></a>
+  <a href="https://ci.wissem.pro/repos/7"><img alt="Woodpecker CI" src="https://ci.wissem.pro/api/badges/7/status.svg" /></a>
   <a href="https://github.com/Wissem-Industries/ParcourTime/releases"><img alt="Latest version" src="https://img.shields.io/github/v/tag/Wissem-Industries/ParcourTime?sort=semver&label=version" /></a>
   <a href="https://ghcr.io/wissem-industries/parcourtime"><img alt="Production image on GHCR" src="https://img.shields.io/badge/GHCR-production-2496ED?logo=docker&logoColor=white" /></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/github/license/Wissem-Industries/ParcourTime" /></a>
