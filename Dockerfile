@@ -21,6 +21,7 @@ RUN bun run build
 
 # ---------- Runtime ----------
 FROM ${BUN_IMAGE} AS production
+ARG IMAGE_VERSION=unknown
 WORKDIR /application
 
 COPY --from=build --chown=bun:bun /application/.output ./.output
@@ -33,4 +34,10 @@ ENV NITRO_PORT=3000
 
 USER bun
 EXPOSE 3000
+LABEL org.opencontainers.image.title="ParcourTime" \
+      org.opencontainers.image.description="Independent Parcoursup calendar for application phases, deadlines and campaign progress" \
+      org.opencontainers.image.source="https://github.com/Wissem-Industries/ParcourTime" \
+      org.opencontainers.image.url="https://parcourtime.wissem.pro" \
+      org.opencontainers.image.licenses="MIT" \
+      org.opencontainers.image.version=$IMAGE_VERSION
 CMD ["bun", ".output/server/index.mjs"]

@@ -1,6 +1,9 @@
 when:
   - event: tag
     ref: refs/tags/v*
+concurrency:
+  limit: 1
+  group: production-parcourtime
 
 steps:
   - name: deployment-start
@@ -35,6 +38,8 @@ steps:
       tags:
         - ${CI_COMMIT_TAG}
         - latest
+      build_args:
+        - IMAGE_VERSION=${CI_COMMIT_TAG}
     depends_on:
       - check
 
