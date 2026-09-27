@@ -1,0 +1,41 @@
+version: 2
+updates:
+  - package-ecosystem: bun
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: tuesday
+      time: "06:00"
+      timezone: "Europe/Paris"
+    open-pull-requests-limit: 5
+    groups:
+      bun-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+  - package-ecosystem: docker
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: tuesday
+      time: "06:00"
+      timezone: "Europe/Paris"
+    open-pull-requests-limit: 5
+    groups:
+      docker-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+  - package-ecosystem: docker-compose
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: tuesday
+      time: "06:00"
+      timezone: "Europe/Paris"
+    open-pull-requests-limit: 5
+    groups:
+      compose-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
