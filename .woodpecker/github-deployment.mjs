@@ -55,6 +55,18 @@ if (process.argv[2] === 'start') {
     log_url: process.env.CI_PIPELINE_URL,
     description: `Publication de ${process.env.CI_COMMIT_TAG} en cours`,
   })
+} else if (process.argv[2] === 'release') {
+  const tag = process.env.CI_COMMIT_TAG
+  if (!tag || !/^v\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?$/.test(tag)) {
+    throw new Error('A semantic version tag is required to publish a GitHub release.')
+  }
+  await request(`/repos/${owner}/${repository}/releases`, {
+    tag_name: tag,
+    name: tag,
+    generate_release_notes: true,
+    draft: false,
+    prerelease: tag.includes('-'),
+  })
 } else if (process.argv[2] === 'success' || process.argv[2] === 'failure') {
   const path = `${process.env.CI_WORKSPACE}${deploymentFile}`
   if (!existsSync(path)) process.exit(0)
@@ -62,5 +74,5 @@ if (process.argv[2] === 'start') {
   if (!id) process.exit(0)
   await request(`${deploymentPath}/${id}/statuses`, statusBody(process.argv[2]))
 } else {
-  throw new Error('Expected start, success, or failure.')
+  throw new Error('Expected start, release, success, or failure.')
 }
