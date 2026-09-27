@@ -17,22 +17,22 @@
     "check": "bun run lint && bun run test && bun run typecheck && bun run build"
   },
   "dependencies": {
-    "@gouvfr/dsfr": "1.14.4",
-    "@gouvminint/vue-dsfr": "8.16.1",
+    "@gouvfr/dsfr": "1.15.3",
+    "@gouvminint/vue-dsfr": "8.20.0",
     "@nuxtjs/plausible": "2.0.1",
     "nuxt": "4.5.2",
-    "vue": "3.5.34"
+    "vue": "3.5.43"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.14",
-    "@nuxt/test-utils": "4.0.3",
+    "@nuxt/test-utils": "4.3.2",
     "@types/bun": "latest",
     "@types/node": "^24.10.1",
     "typescript": "^5.9.3",
     "vitest": "4.1.11",
-    "vue-tsc": "3.3.1"
+    "vue-tsc": "3.3.11"
   },
-  "version": "1.0.7",
+  "version": "1.0.8",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Wissem-Industries/ParcourTime.git"
