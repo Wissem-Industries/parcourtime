@@ -1,5 +1,5 @@
 when:
-  - event: [push, pull_request]
+  - event: [push, pull_request, tag]
 
 steps:
   - name: check
@@ -8,11 +8,15 @@ steps:
       - bun install --frozen-lockfile
       - bun run check
 
-  - name: docker
+  - name: container-dry-run
     image: woodpeckerci/plugin-kaniko:2.3.2
     settings:
       dry-run: true
       repo: wissem-industries/parcourtime
       dockerfile: Dockerfile
+      tags:
+        - ${CI_COMMIT_SHA}
     depends_on:
       - check
+    when:
+      - event: [push, pull_request]
