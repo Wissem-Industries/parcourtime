@@ -14,5 +14,5 @@ ParcourTime est un calendrier indépendant pour suivre les phases et échéances
 
 - Nuxt 4, Vue 3, TypeScript, Bun 1.4.x, Biome 2, Vitest et DSFR. Installer avec `bun install --frozen-lockfile`.
 - `bun run check` exécute lint, tests, typecheck et build. Utiliser les scripts existants plutôt que d’inventer une commande parallèle.
-- Respecter les conventions communes de [`../Wissem's Industries/AGENTS.md`](../Wissem's%20Industries/AGENTS.md), notamment Alpine/Bun dans CI et les consignes de secrets.
+- Respecter les conventions communes de Wissem's Industries, notamment Alpine/Bun dans CI et les consignes de secrets.
 - Mettre à jour ce fichier automatiquement pour toute règle durable propre à ParcourTime; reporter les règles partagées au dépôt central.
