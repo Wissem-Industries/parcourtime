@@ -9,16 +9,16 @@ if (!token || !owner || !repository) {
   throw new Error('GitHub deployment credentials or repository metadata are missing.')
 }
 
-const request = async (path, body) => {
+const request = async (path, body, method = 'POST') => {
   const response = await fetch(`${api}${path}`, {
-    method: 'POST',
+    method,
     headers: {
       Accept: 'application/vnd.github+json',
       Authorization: `Bearer ${token}`,
       'X-GitHub-Api-Version': '2022-11-28',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(body),
+    body: body === undefined ? undefined : JSON.stringify(body),
   })
 
   if (!response.ok) {
@@ -57,9 +57,17 @@ if (process.argv[2] === 'start') {
   })
 } else if (process.argv[2] === 'release') {
   const tag = process.env.CI_COMMIT_TAG
-  if (!tag || !/^v\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?$/.test(tag)) {
+  const semver =
+    /^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-(?:0|[1-9]\d*|[0-9A-Za-z-]*[A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9]\d*|[0-9A-Za-z-]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?$/
+  if (!tag || !semver.test(tag)) {
     throw new Error('A semantic version tag is required to publish a GitHub release.')
   }
+  const releasePath = `/repos/${owner}/${repository}/releases/tags/${encodeURIComponent(tag)}`
+  const existing = await request(releasePath, undefined, 'GET').catch((error) => {
+    if (error.message.includes('returned 404')) return null
+    throw error
+  })
+  if (existing) process.exit(0)
   const changelog = existsSync('CHANGELOG.md') ? readFileSync('CHANGELOG.md', 'utf8') : ''
   const heading = changelog.indexOf(`## [${tag.slice(1)}]`)
   const notes =

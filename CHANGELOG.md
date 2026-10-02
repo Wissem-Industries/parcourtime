@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-10-02
+
 ### Changed
 
 - Analytics events are sent through the site to the self-hosted Plausible instance (Plausible module 4).
