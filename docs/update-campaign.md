@@ -16,4 +16,5 @@ Parcoursup dates change every year. They are kept in a single file, `app/data/pa
 1. Copy an existing campaign in `campaigns`.
 2. Change `id`, `label`, `lastUpdated` and the sources.
 3. Fill in the phases with official dates or clearly marked estimates; leave unpublished phases as `to_confirm`.
-4. Run `bun run check`.
+4. Run `bun run images:og` to regenerate the sharing image `public/og.png` from the new campaign.
+5. Run `bun run check`.

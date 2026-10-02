@@ -54,6 +54,9 @@ watch(
   { immediate: true },
 )
 
+const defaultCampaign = getCampaignById(defaultCampaignId) ?? fallbackCampaign
+const socialImage = `https://parcourtime.wissem.pro/og.png?v=${defaultCampaign.lastUpdated}`
+
 useSeoMeta({
   title: () => `ParcourTime - ${selectedCampaign.value.label}`,
   description: () =>
@@ -61,9 +64,21 @@ useSeoMeta({
   ogTitle: () => `ParcourTime - ${selectedCampaign.value.label}`,
   ogDescription: () =>
     'Suivez les grandes échéances Parcoursup avec des dates centralisées et clairement qualifiées.',
-  ogImage: '/Parcoursup_Banner.jpg',
+  ogImage: socialImage,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  ogImageType: 'image/png',
+  ogImageAlt: () =>
+    `Calendrier Parcoursup ${selectedCampaign.value.id} : les phases de la campagne`,
+  ogType: 'website',
+  ogSiteName: 'ParcourTime',
+  ogLocale: 'fr_FR',
   ogUrl: 'https://parcourtime.wissem.pro',
   twitterCard: 'summary_large_image',
+  twitterTitle: () => `ParcourTime - ${selectedCampaign.value.label}`,
+  twitterDescription: () =>
+    `Compte à rebours et calendrier indicatif des phases Parcoursup pour ${selectedCampaign.value.label}.`,
+  twitterImage: socialImage,
 })
 </script>
 

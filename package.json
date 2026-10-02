@@ -7,6 +7,7 @@
     "build": "bun --bun nuxt build",
     "dev": "bun --bun nuxt dev",
     "lint": "biome check .",
+    "images:og": "bun scripts/og.ts",
     "start": "bun .output/server/index.mjs",
     "test": "vitest run",
     "typecheck": "bun --bun nuxt typecheck",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "@biomejs/biome": "^2.5.14",
     "@nuxt/test-utils": "4.3.2",
+    "@playwright/test": "^1.63.0",
     "@types/bun": "latest",
     "@types/node": "^26.6.3",
     "typescript": "^5.9.3",

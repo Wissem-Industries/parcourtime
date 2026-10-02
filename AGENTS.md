@@ -7,6 +7,7 @@ ParcourTime est un calendrier indépendant pour suivre les phases et échéances
 - Conserver le DSFR et VueDsfr : ce sont des choix d’identité et d’accessibilité du service; Wissem UI ne les remplace pas automatiquement.
 - Les campagnes sont versionnées dans `app/data/parcoursup/campaigns.json`. Suivre [`docs/update-campaign.md`](docs/update-campaign.md) pour les mises à jour annuelles.
 - Les dates d’une campagne future restent des estimations jusqu’à publication officielle; les signaler comme telles et ne pas les présenter comme certaines.
+- L’image de partage `public/og.png` est générée par `bun run images:og` à partir de la campagne la plus récente ; la relancer à chaque mise à jour de `campaigns.json`. Pas de logo ni de visuel Parcoursup dessus.
 - L’interface vise une utilisation mobile, au clavier et en français. Préserver les liens partageables, le choix de campagne et la navigation chronologique.
 - Versions : SemVer, CHANGELOG tenu à chaque PR (section `Unreleased`), montée par `bun run release <x.y.z>`. Woodpecker valide push et PR ; le tag `vX.Y.Z` publie l’image GHCR et déclenche le webhook Dokploy.
 

@@ -4,6 +4,9 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+- Sharing image generated from the latest campaign (phase timeline, estimated dates flagged), replacing the Parcoursup banner. Open Graph and Twitter tags completed with absolute image URL, dimensions and alt text.
+- `images:og` script; the sitemap announced in `robots.txt` is added.
+
 ## [1.0.0] - 2026-10-02
 
 First release under the shared versioning of the wissem.pro projects.
