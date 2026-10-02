@@ -2,7 +2,7 @@
 
 Independent calendar of the Parcoursup campaign, at [parcourtime.wissem.pro](https://parcourtime.wissem.pro).
 
-[![CI](https://ci.wissem.pro/api/badges/7/status.svg)](https://ci.wissem.pro/repos/7)
+[![CI](https://ci.wissem.pro/api/badges/13/status.svg)](https://ci.wissem.pro/repos/13)
 [![Release](https://img.shields.io/github/v/release/Wissem-Industries/parcourtime?sort=semver)](https://github.com/Wissem-Industries/parcourtime/releases)
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
