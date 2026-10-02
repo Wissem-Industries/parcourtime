@@ -10,7 +10,7 @@
     "images:og": "bun scripts/og.ts",
     "start": "bun .output/server/index.mjs",
     "test": "vitest run",
-    "typecheck": "bun --bun nuxt typecheck",
+    "typecheck": "node ./node_modules/nuxt/bin/nuxt.mjs typecheck --checker=golar",
     "generate": "nuxt generate",
     "preview": "bun --bun nuxt preview",
     "postinstall": "bun --bun nuxt prepare",
@@ -27,13 +27,14 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.14",
+    "@golar/vue": "0.1.10",
     "@nuxt/test-utils": "4.3.2",
     "@playwright/test": "^1.63.0",
     "@types/bun": "latest",
     "@types/node": "^26.6.3",
-    "typescript": "^5.9.3",
-    "vitest": "5.0.2",
-    "vue-tsc": "3.3.11"
+    "golar": "0.1.10",
+    "typescript": "7.0.2",
+    "vitest": "5.0.2"
   },
   "version": "1.1.0",
   "repository": {

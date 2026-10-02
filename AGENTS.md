@@ -14,6 +14,6 @@ ParcourTime est un calendrier indépendant pour suivre les phases et échéances
 ## Stack et commandes
 
 - Nuxt 4, Vue 3, TypeScript, Bun 1.4.x, Biome 2, Vitest et DSFR. Installer avec `bun install --frozen-lockfile`.
-- `bun run check` exécute lint, tests, typecheck et build. Utiliser les scripts existants plutôt que d’inventer une commande parallèle.
+- `bun run check` exécute lint, tests, typecheck et build. TypeScript 7 : le typecheck passe par Golar avec Node (`node ./node_modules/nuxt/bin/nuxt.mjs typecheck --checker=golar`), `vue-tsc` ne fonctionne plus ; la CI installe `nodejs`. Utiliser les scripts existants plutôt que d’inventer une commande parallèle.
 - Respecter les conventions communes de Wissem's Industries, notamment Alpine/Bun dans CI et les consignes de secrets.
 - Mettre à jour ce fichier automatiquement pour toute règle durable propre à ParcourTime; reporter les règles partagées au dépôt central.

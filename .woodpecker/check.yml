@@ -5,6 +5,7 @@ steps:
   - name: check
     image: oven/bun:alpine
     commands:
+      - apk add --no-cache nodejs
       - bun install --frozen-lockfile
       - bun run check
 

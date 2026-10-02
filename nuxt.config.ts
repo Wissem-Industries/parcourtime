@@ -30,7 +30,8 @@ export default defineNuxtConfig({
 
   typescript: {
     strict: true,
-    typeCheck: true,
+    // Types are checked by `bun run typecheck` (Golar) before the build.
+    typeCheck: false,
   },
 
   app: {
