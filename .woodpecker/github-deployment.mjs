@@ -53,17 +53,27 @@ if (process.argv[2] === 'start') {
   await request(`${deploymentPath}/${deployment.id}/statuses`, {
     state: 'in_progress',
     log_url: process.env.CI_PIPELINE_URL,
-    description: `Publication de ${process.env.CI_COMMIT_TAG} en cours`,
+    description: `Publishing ${process.env.CI_COMMIT_TAG}`,
   })
 } else if (process.argv[2] === 'release') {
   const tag = process.env.CI_COMMIT_TAG
   if (!tag || !/^v\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?$/.test(tag)) {
     throw new Error('A semantic version tag is required to publish a GitHub release.')
   }
+  const changelog = existsSync('CHANGELOG.md') ? readFileSync('CHANGELOG.md', 'utf8') : ''
+  const heading = changelog.indexOf(`## [${tag.slice(1)}]`)
+  const notes =
+    heading === -1
+      ? ''
+      : changelog
+          .slice(changelog.indexOf('\n', heading) + 1)
+          .split(/\n## \[/)[0]
+          .trim()
   await request(`/repos/${owner}/${repository}/releases`, {
     tag_name: tag,
     name: tag,
-    generate_release_notes: true,
+    body: notes,
+    generate_release_notes: !notes,
     draft: false,
     prerelease: tag.includes('-'),
   })

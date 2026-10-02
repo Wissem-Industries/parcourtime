@@ -8,7 +8,7 @@ ParcourTime est un calendrier indépendant pour suivre les phases et échéances
 - Les campagnes sont versionnées dans `app/data/parcoursup/campaigns.json`. Suivre [`docs/update-campaign.md`](docs/update-campaign.md) pour les mises à jour annuelles.
 - Les dates d’une campagne future restent des estimations jusqu’à publication officielle; les signaler comme telles et ne pas les présenter comme certaines.
 - L’interface vise une utilisation mobile, au clavier et en français. Préserver les liens partageables, le choix de campagne et la navigation chronologique.
-- L’image de production est publiée sur GHCR. Woodpecker valide push/PR; les tags `v*` doivent correspondre à la version du paquet et déclenchent la publication et le webhook Dokploy.
+- Versions : SemVer, CHANGELOG tenu à chaque PR (section `Unreleased`), montée par `bun run release <x.y.z>`. Woodpecker valide push et PR ; le tag `vX.Y.Z` publie l’image GHCR et déclenche le webhook Dokploy.
 
 ## Stack et commandes
 

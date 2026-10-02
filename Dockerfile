@@ -36,7 +36,7 @@ USER bun
 EXPOSE 3000
 LABEL org.opencontainers.image.title="ParcourTime" \
       org.opencontainers.image.description="Independent Parcoursup calendar for application phases, deadlines and campaign progress" \
-      org.opencontainers.image.source="https://github.com/Wissem-Industries/ParcourTime" \
+      org.opencontainers.image.source="https://github.com/Wissem-Industries/parcourtime" \
       org.opencontainers.image.url="https://parcourtime.wissem.pro" \
       org.opencontainers.image.licenses="MIT" \
       org.opencontainers.image.version=$IMAGE_VERSION

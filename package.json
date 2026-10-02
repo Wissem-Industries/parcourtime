@@ -14,7 +14,8 @@
     "preview": "bun --bun nuxt preview",
     "postinstall": "bun --bun nuxt prepare",
     "lint:fix": "biome check --write .",
-    "check": "bun run lint && bun run test && bun run typecheck && bun run build"
+    "check": "bun run lint && bun run test && bun run typecheck && bun run build",
+    "release": "bun scripts/release.mjs"
   },
   "dependencies": {
     "@gouvfr/dsfr": "1.15.3",
@@ -32,10 +33,10 @@
     "vitest": "5.0.2",
     "vue-tsc": "3.3.11"
   },
-  "version": "1.0.9",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Wissem-Industries/ParcourTime.git"
+    "url": "git+https://github.com/Wissem-Industries/parcourtime.git"
   },
   "packageManager": "bun@1.4.2"
 }

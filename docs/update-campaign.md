@@ -1,33 +1,19 @@
-# Mettre à jour une campagne Parcoursup
+# Updating a campaign
 
-Les dates Parcoursup changent chaque année. ParcourTime les garde dans une source JSON unique :
+Parcoursup dates change every year. They are kept in a single file, `app/data/parcoursup/campaigns.json`; the interface reads it and needs no change.
 
-`app/data/parcoursup/campaigns.json`
+## Rules
 
-## Règles
+- Use `parcoursup.gouv.fr`, the ministry or another official document first.
+- In a future campaign, mark every estimated date with `certainty: 'estimated'`. When no estimate is possible, use `certainty: 'to_confirm'` and leave `start`, `end` and `date` out.
+- Write dates in ISO format with the Europe/Paris offset, for example `2026-03-12T23:59:59+01:00`.
+- For official dates, list the sources in `sources` and reference their ids in `sourceIds`. Estimates keep both lists empty.
+- Set `lastUpdated` to the day of the check.
+- Do not edit `campaigns.ts` to add a campaign: it only types the data.
 
-- Utiliser en priorité `parcoursup.gouv.fr`, le ministère ou un document institutionnel.
-- Pour une campagne future, utiliser `certainty: 'estimated'` pour toute date estimée. Si aucune estimation n’est possible, utiliser `certainty: 'to_confirm'` et ne pas renseigner
-  `start`, `end` ou `date`.
-- Renseigner les dates en ISO avec offset Europe/Paris, par exemple `2026-03-12T23:59:59+01:00`.
-- Pour les dates officielles, ajouter les sources dans `sources`, puis référencer leurs identifiants dans `sourceIds`. Les estimations gardent ces listes vides.
-- Mettre à jour `lastUpdated` avec la date de vérification.
-- Ne pas modifier `campaigns.ts` pour ajouter une campagne : il sert seulement d’adaptateur typé.
+## Adding a campaign
 
-## Ajouter une nouvelle campagne
-
-1. Dupliquer la structure d’une campagne existante dans `campaigns`.
-2. Changer `id`, `label`, `lastUpdated` et les sources.
-3. Remplir les phases avec les dates officielles ou des estimations clairement qualifiées.
-4. Laisser les phases non publiées en `to_confirm`.
-5. Lancer les vérifications :
-
-```bash
-bun run test
-bun run typecheck
-bun run lint
-bun run build
-```
-
-L’interface lit automatiquement la liste des campagnes. Aucun composant UI ne doit être modifié pour ajouter une
-campagne.
+1. Copy an existing campaign in `campaigns`.
+2. Change `id`, `label`, `lastUpdated` and the sources.
+3. Fill in the phases with official dates or clearly marked estimates; leave unpublished phases as `to_confirm`.
+4. Run `bun run check`.

@@ -1,81 +1,39 @@
 # ParcourTime
 
-<p align="center">
-  <strong>A clear, accessible Parcoursup calendar.</strong><br />
-  Follow application phases, upcoming deadlines and campaign progress.
-</p>
+Independent calendar of the Parcoursup campaign, at [parcourtime.wissem.pro](https://parcourtime.wissem.pro).
 
-<p align="center">
-  <a href="https://ci.wissem.pro/repos/7"><img alt="Woodpecker CI" src="https://ci.wissem.pro/api/badges/7/status.svg" /></a>
-  <a href="https://github.com/Wissem-Industries/ParcourTime/releases"><img alt="Latest version" src="https://img.shields.io/github/v/tag/Wissem-Industries/ParcourTime?sort=semver&label=version" /></a>
-  <a href="https://ghcr.io/wissem-industries/parcourtime"><img alt="Production image on GHCR" src="https://img.shields.io/badge/GHCR-production-2496ED?logo=docker&logoColor=white" /></a>
-  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/github/license/Wissem-Industries/ParcourTime" /></a>
-</p>
+[![CI](https://ci.wissem.pro/api/badges/7/status.svg)](https://ci.wissem.pro/repos/7)
+[![Release](https://img.shields.io/github/v/release/Wissem-Industries/parcourtime?sort=semver)](https://github.com/Wissem-Industries/parcourtime/releases)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-<p align="center">
-  <img alt="Nuxt 4" src="https://img.shields.io/badge/Nuxt-4-00DC82?logo=nuxt.js&logoColor=white" />
-  <img alt="Vue 3" src="https://img.shields.io/badge/Vue-3-4FC08D?logo=vuedotjs&logoColor=white" />
-  <img alt="Bun 1.4" src="https://img.shields.io/badge/Bun-1.4-FBF0DF?logo=bun&logoColor=000" />
-  <img alt="Biome 2" src="https://img.shields.io/badge/Biome-2-60A5FA?logo=biome&logoColor=white" />
-</p>
+Shows the current phase, the next deadline with a countdown, and every phase of a campaign in order. Campaigns from several years can be compared and shared by URL. The interface is in French and uses the French government design system (DSFR).
 
-ParcourTime is an independent calendar maintained by **Wissem’s Industries**.
-It is not affiliated with Parcoursup or the French Ministry of Higher Education.
-Dates for a future campaign remain estimates until official publication and are
-marked as such. Always confirm official dates before taking action.
-
-## Features
-
-- Select a campaign and share it through the URL.
-- See the current phase, next deadline, countdown and overall progress.
-- Browse past, current and upcoming phases in chronological order.
-- Compare versioned campaigns from different years.
-- Use the French-language interface on mobile or with a keyboard.
-
-## Technology
-
-Nuxt 4 · Vue 3 · TypeScript · DSFR · VueDsfr · Bun 1.4 · Biome 2 · Vitest
+ParcourTime is not affiliated with Parcoursup or the Ministry of Higher Education. Dates of a future campaign are estimates until they are published, and are shown as such.
 
 ## Development
 
-Requirements: [Bun 1.4 or later](https://bun.sh/).
+Requires Bun 1.4.
 
-```sh
-git clone https://github.com/Wissem-Industries/ParcourTime.git
-cd ParcourTime
-bun install --frozen-lockfile
-bun run dev
+```bash
+bun install
+bun run dev     # http://localhost:3000
+bun run check   # lint, unit tests, typecheck, build
 ```
-
-The application is available at `http://localhost:3000`.
-
-## Quality checks
-
-```sh
-bun run check
-```
-
-This runs Biome, unit tests, TypeScript checks and a production build.
 
 ## Campaign data
 
-Campaign calendars are versioned in
-[`app/data/parcoursup/campaigns.json`](app/data/parcoursup/campaigns.json).
-See [`docs/update-campaign.md`](docs/update-campaign.md) for the annual update
-process.
+Campaigns live in [`app/data/parcoursup/campaigns.json`](app/data/parcoursup/campaigns.json). See [docs/update-campaign.md](docs/update-campaign.md) for the yearly update.
 
-## Production
+## Release
 
-Woodpecker checks pushes and pull requests. A `v*` tag that matches
-`package.json.version` runs the release checks, publishes the versioned image and
-`latest` to `ghcr.io/wissem-industries/parcourtime`, then triggers Dokploy and
-creates a GitHub Release. The production container listens on port `3000`.
-Confirm the Dokploy service points at the published image before releasing.
+Versions follow Semantic Versioning and changes are listed in [CHANGELOG.md](CHANGELOG.md).
 
-```sh
-docker compose up --build -d
+```bash
+bun run release 1.1.0   # updates package.json and the changelog
 ```
+
+Merge the release pull request, then push the `v1.1.0` tag. The pipeline checks the tag, publishes `ghcr.io/wissem-industries/parcourtime`, deploys it on Dokploy and creates the GitHub release.
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+[MIT](LICENSE)
