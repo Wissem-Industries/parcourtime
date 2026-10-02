@@ -62,12 +62,8 @@ export default defineNuxtConfig({
       routes: ['/'],
       crawlLinks: true,
     },
-    routeRules: {
-      '/_plausible/**': {
-        proxy: { to: 'https://analytics.wissem.pro/**' },
-      },
-    },
   },
 
-  plausible: { proxy: true },
+  // Events go through /_plausible/api/event on this origin, then to the self-hosted instance.
+  plausible: { apiHost: 'https://analytics.wissem.pro', proxy: true },
 })

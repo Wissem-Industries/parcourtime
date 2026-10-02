@@ -4,6 +4,10 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Changed
+
+- Analytics events are sent through the site to the self-hosted Plausible instance (Plausible module 4).
+
 ## [1.1.0] - 2026-10-02
 
 - Sharing image generated from the latest campaign (phase timeline, estimated dates flagged), replacing the Parcoursup banner. Open Graph and Twitter tags completed with absolute image URL, dimensions and alt text.
