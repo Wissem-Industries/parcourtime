@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.1.3] - 2026-10-08
+
 ### Fixed
 
 - Analytics: events relayed to Plausible carry the visitor address in `X-Plausible-IP`; Cloudflare was replacing it with the server address.
