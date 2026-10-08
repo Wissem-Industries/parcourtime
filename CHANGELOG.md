@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.1.2] - 2026-10-08
+
 ### Fixed
 
 - Analytics: the first-party event path is `/_w` instead of `/_plausible`, which some content blockers list.
