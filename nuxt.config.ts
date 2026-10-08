@@ -64,6 +64,6 @@ export default defineNuxtConfig({
     },
   },
 
-  // Events go through /_plausible/api/event on this origin, then to the self-hosted instance.
-  plausible: { apiHost: 'https://analytics.wissem.pro', proxy: true },
+  // Events go through /_w/api/event on this origin (a neutral path content blockers do not list), then to the self-hosted instance.
+  plausible: { apiHost: 'https://analytics.wissem.pro', proxy: true, proxyBaseEndpoint: '/_w' },
 })
