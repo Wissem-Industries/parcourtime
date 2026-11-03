@@ -1,41 +1,74 @@
 version: 2
 updates:
   - package-ecosystem: bun
-    directory: "/"
+    directory: /
     schedule:
-      interval: weekly
-      day: tuesday
-      time: "06:00"
-      timezone: "Europe/Paris"
-    open-pull-requests-limit: 5
+      interval: cron
+      cronjob: 10 7 7 * *
+      timezone: Europe/Paris
+    open-pull-requests-limit: 1
     groups:
+      bun-security:
+        applies-to: security-updates
+        patterns:
+          - '*'
       bun-minor-patch:
+        patterns:
+          - '*'
         update-types:
-          - "minor"
-          - "patch"
+          - minor
+          - patch
+    cooldown:
+      default-days: 7
+    ignore:
+      - dependency-name: '*'
+        update-types:
+          - version-update:semver-major
   - package-ecosystem: docker
-    directory: "/"
+    directory: /
     schedule:
-      interval: weekly
-      day: tuesday
-      time: "06:00"
-      timezone: "Europe/Paris"
-    open-pull-requests-limit: 5
+      interval: cron
+      cronjob: 20 7 7 * *
+      timezone: Europe/Paris
+    open-pull-requests-limit: 1
     groups:
+      docker-security:
+        applies-to: security-updates
+        patterns:
+          - '*'
       docker-minor-patch:
+        patterns:
+          - '*'
         update-types:
-          - "minor"
-          - "patch"
+          - minor
+          - patch
+    cooldown:
+      default-days: 7
+    ignore:
+      - dependency-name: '*'
+        update-types:
+          - version-update:semver-major
   - package-ecosystem: docker-compose
-    directory: "/"
+    directory: /
     schedule:
-      interval: weekly
-      day: tuesday
-      time: "06:00"
-      timezone: "Europe/Paris"
-    open-pull-requests-limit: 5
+      interval: cron
+      cronjob: 30 7 7 * *
+      timezone: Europe/Paris
+    open-pull-requests-limit: 1
     groups:
-      compose-minor-patch:
+      docker-compose-security:
+        applies-to: security-updates
+        patterns:
+          - '*'
+      docker-compose-minor-patch:
+        patterns:
+          - '*'
         update-types:
-          - "minor"
-          - "patch"
+          - minor
+          - patch
+    cooldown:
+      default-days: 7
+    ignore:
+      - dependency-name: '*'
+        update-types:
+          - version-update:semver-major

@@ -1,5 +1,8 @@
 when:
-  - event: [push, pull_request, tag]
+  - event: pull_request
+  - event: push
+    branch: main
+  - event: tag
 
 steps:
   - name: check
