@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-11-09
+
 ### Added
 
 - Calendar export per campaign at `/agenda/<campagne>.ics`: subscription (`webcal://`) or download, one all-day event per key date, reminder the day before the main deadlines.
