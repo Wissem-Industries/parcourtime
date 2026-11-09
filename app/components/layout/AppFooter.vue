@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Campaign } from '~/types/parcoursup'
+import { formatIsoDay } from '~/utils/calendar'
 
 defineProps<{
   campaign: Campaign
@@ -15,10 +16,10 @@ defineProps<{
         </div>
         <div class="fr-footer__content">
           <p class="fr-footer__content-desc pt-footer-note">
-            ParcourTime est un projet de Wissem’s Industries, indépendant et non officiel. Les dates prévisionnelles sont des estimations : vérifiez le calendrier Parcoursup avant toute démarche.
+            ParcourTime est un projet de Wissem’s Industries, indépendant et non officiel. Vérifiez le calendrier Parcoursup avant toute démarche.
           </p>
           <p class="fr-text--sm fr-mb-0">
-            Dernière mise à jour des données : {{ campaign.lastUpdated }}.
+            Dernière mise à jour des données : {{ formatIsoDay(campaign.lastUpdated) }}.
           </p>
         </div>
       </div>

@@ -17,7 +17,7 @@ const badge = computed(() => {
     case 'date_unconfirmed':
       return { label: 'Date à confirmer', type: 'warning' as const }
     case 'outside_calendar':
-      return { label: 'Hors calendrier', type: 'error' as const }
+      return { label: 'Hors calendrier', type: 'info' as const }
     default:
       return { label: 'Statut inconnu', type: 'error' as const }
   }

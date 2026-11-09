@@ -3,17 +3,22 @@ import type { Deadline } from '~/types/parcoursup'
 
 const props = defineProps<{
   deadline: Deadline | null
+  now: Date
+  live: boolean
 }>()
 
-const target = computed(() => props.deadline?.date ?? null)
-const { remaining } = useCountdown(target)
-
-const items = computed(() => [
-  { label: 'jours', value: remaining.value.days },
-  { label: 'heures', value: remaining.value.hours },
-  { label: 'minutes', value: remaining.value.minutes },
-  { label: 'secondes', value: remaining.value.seconds },
-])
+const items = computed(() => {
+  const remaining = splitDuration(
+    props.deadline ? props.deadline.date.getTime() - props.now.getTime() : 0,
+  )
+  const show = (value: number) => (props.live ? String(value) : '–')
+  return [
+    { label: 'jours', value: show(remaining.days) },
+    { label: 'heures', value: show(remaining.hours) },
+    { label: 'minutes', value: show(remaining.minutes) },
+    { label: 'secondes', value: show(remaining.seconds) },
+  ]
+})
 </script>
 
 <template>
@@ -31,7 +36,6 @@ const items = computed(() => [
       <div
           class="pt-countdown"
           role="timer"
-          aria-live="polite"
           :aria-label="`Temps restant avant ${deadline.title}`"
       >
         <div v-for="item in items" :key="item.label" class="pt-countdown__item">

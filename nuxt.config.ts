@@ -1,3 +1,5 @@
+import campaigns from './app/data/parcoursup/campaigns.json'
+
 export default defineNuxtConfig({
   compatibilityDate: '2026-05-22',
   devtools: { enabled: false },
@@ -42,7 +44,8 @@ export default defineNuxtConfig({
       meta: [
         {
           name: 'description',
-          content: 'Suivez les échéances estimées Parcoursup 2027 avec un compte à rebours clair.',
+          content:
+            'Suivez les échéances officielles Parcoursup 2027 avec un compte à rebours clair.',
         },
         { name: 'theme-color', content: '#000091' },
       ],
@@ -59,7 +62,7 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'bun',
     prerender: {
-      routes: ['/'],
+      routes: ['/', ...campaigns.map((campaign) => `/agenda/${campaign.id}.ics`)],
       crawlLinks: true,
     },
   },

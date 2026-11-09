@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import type { ParcoursupPhase } from '~/types/parcoursup'
+import type { ParcoursupPhase, Source } from '~/types/parcoursup'
 import { formatPhaseRange, getPhaseStatus } from '~/utils/calendar'
 
 const props = defineProps<{
   phase: ParcoursupPhase
   now: Date
+  sources: Source[]
 }>()
 
 const status = computed(() => getPhaseStatus(props.phase, props.now))
@@ -51,6 +52,14 @@ const cardClass = computed(() => ({
             </li>
           </ul>
         </div>
+
+        <p v-if="sources.length" class="fr-text--xs fr-mt-2w fr-mb-0 pt-muted">
+          Source :
+          <template v-for="(source, index) in sources" :key="source.id">
+            <template v-if="index">, </template>
+            <a :href="source.url" target="_blank" rel="noopener noreferrer">{{ source.title }}</a>
+          </template>
+        </p>
       </div>
     </div>
   </article>
