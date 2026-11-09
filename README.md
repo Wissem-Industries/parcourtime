@@ -6,7 +6,7 @@ Independent calendar of the Parcoursup campaign, at [parcourtime.wissem.pro](htt
 [![Release](https://img.shields.io/github/v/release/Wissem-Industries/parcourtime?sort=semver)](https://github.com/Wissem-Industries/parcourtime/releases)
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-Shows the current phase, the next deadline with a countdown, and every phase of a campaign in order. Campaigns from several years can be compared and shared by URL. The interface is in French and uses the French government design system (DSFR).
+Shows the current phase, the next deadline with a countdown, and every phase of a campaign in order. Campaigns from several years can be compared and shared by URL (`?campagne=2025-2026`), and each campaign's key dates can be added to a calendar app (`/agenda/2026-2027.ics`). The interface is in French and uses the French government design system (DSFR).
 
 ParcourTime is not affiliated with Parcoursup or the Ministry of Higher Education. Dates of a future campaign are estimates until they are published, and are shown as such.
 

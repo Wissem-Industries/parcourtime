@@ -339,3 +339,22 @@ html {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+@media (min-width: 48em) {
+  .pt-agenda-actions {
+    justify-content: flex-end;
+  }
+}
+
+/* The DSFR card orders the title (2) and description (3); keep badges above and details below. */
+.pt-phase-card .pt-phase-meta {
+  order: 1;
+}
+
+.pt-phase-card .fr-card__content > :not(.pt-phase-meta, .fr-card__title, .fr-card__desc) {
+  order: 4;
+}
+
+.pt-phase-card .fr-card__desc {
+  margin-bottom: 1rem;
+}

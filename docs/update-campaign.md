@@ -8,7 +8,9 @@ Parcoursup dates change every year. They are kept in a single file, `app/data/pa
 - In a future campaign, mark every estimated date with `certainty: 'estimated'`. When no estimate is possible, use `certainty: 'to_confirm'` and leave `start`, `end` and `date` out.
 - Write dates in ISO format with the Europe/Paris offset, for example `2026-03-12T23:59:59+01:00`.
 - For official dates, list the sources in `sources` and reference their ids in `sourceIds`. Estimates keep both lists empty.
-- Set `lastUpdated` to the day of the check.
+- Set `lastUpdated` to the day of the check; it is also the `DTSTAMP` of the calendar export.
+- `parcoursup.gouv.fr` sits behind Cloudflare and blocks plain HTTP clients: read the page in a browser and list the PDF link as a second source.
+- When the official calendar is published, switch every phase and milestone of the campaign to `official`, with sources. Phases the calendar does not name (the review of applications) take their bounds from the official dates around them.
 - Do not edit `campaigns.ts` to add a campaign: it only types the data.
 
 ## Adding a campaign
@@ -16,5 +18,6 @@ Parcoursup dates change every year. They are kept in a single file, `app/data/pa
 1. Copy an existing campaign in `campaigns`.
 2. Change `id`, `label`, `lastUpdated` and the sources.
 3. Fill in the phases with official dates or clearly marked estimates; leave unpublished phases as `to_confirm`.
-4. Run `bun run images:og` to regenerate the sharing image `public/og.png` from the new campaign.
-5. Run `bun run check`.
+4. The calendar export `/agenda/<id>.ics` and its prerendering follow `campaigns.json`; nothing to change.
+5. Run `bun run images:og` to regenerate the sharing image `public/og.png` from the new campaign.
+6. Run `bun run check`.

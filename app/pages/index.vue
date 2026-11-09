@@ -9,16 +9,39 @@ import {
   getPhaseStatus,
   hasUnconfirmedDates,
 } from '~/utils/calendar'
+import { icsPath } from '~/utils/ics'
 
-const selectedCampaignId = ref(defaultCampaignId)
+const route = useRoute()
+const router = useRouter()
 const fallbackCampaign = campaigns[0] as Campaign
 const campaignOptions = campaigns as Campaign[]
+const selectedCampaignId = ref<string>(defaultCampaignId)
 const selectedCampaign = computed(
   () => getCampaignById(selectedCampaignId.value) ?? fallbackCampaign,
 )
 
-const clockTarget = computed<Date | null>(() => null)
-const { now } = useCountdown(clockTarget)
+const { now, live } = useNow()
+
+// `?campagne=` is applied once mounted: the prerendered page hydrates on `/`, then the
+// router moves to the requested address, query included.
+const applyRequestedCampaign = (requested: unknown) => {
+  if (typeof requested === 'string' && getCampaignById(requested)) {
+    selectedCampaignId.value = requested
+  }
+}
+
+onMounted(() => {
+  applyRequestedCampaign(route.query.campagne)
+  watch(() => route.query.campagne, applyRequestedCampaign)
+  watch(selectedCampaignId, (id) => {
+    const campagne = id === defaultCampaignId ? undefined : id
+    if (route.query.campagne === campagne) return
+    router.replace({ query: { ...route.query, campagne } })
+  })
+})
+
+const agendaPath = computed(() => icsPath(selectedCampaign.value.id))
+const agendaSubscribeUrl = computed(() => `webcal://parcourtime.wissem.pro${agendaPath.value}`)
 
 const currentPhase = computed(() => getCurrentPhase(selectedCampaign.value, now.value))
 const nextDeadline = computed(() => getNextDeadline(selectedCampaign.value, now.value))
@@ -60,7 +83,7 @@ const socialImage = `https://parcourtime.wissem.pro/og.png?v=${defaultCampaign.l
 useSeoMeta({
   title: () => `ParcourTime - ${selectedCampaign.value.label}`,
   description: () =>
-    `Compte à rebours et calendrier indicatif des phases Parcoursup pour ${selectedCampaign.value.label}.`,
+    `Compte à rebours et calendrier des phases Parcoursup pour ${selectedCampaign.value.label}.`,
   ogTitle: () => `ParcourTime - ${selectedCampaign.value.label}`,
   ogDescription: () =>
     'Suivez les grandes échéances Parcoursup avec des dates centralisées et clairement qualifiées.',
@@ -77,7 +100,7 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
   twitterTitle: () => `ParcourTime - ${selectedCampaign.value.label}`,
   twitterDescription: () =>
-    `Compte à rebours et calendrier indicatif des phases Parcoursup pour ${selectedCampaign.value.label}.`,
+    `Compte à rebours et calendrier des phases Parcoursup pour ${selectedCampaign.value.label}.`,
   twitterImage: socialImage,
 })
 </script>
@@ -119,7 +142,7 @@ useSeoMeta({
           >
             <h2 class="fr-alert__title">Calendrier prévisionnel</h2>
             <p>
-              Les dates de cette campagne sont des estimations. Elles seront mises à jour après publication du calendrier officiel.
+              Certaines dates de cette campagne sont des estimations. Elles seront mises à jour après publication du calendrier officiel.
             </p>
           </div>
 
@@ -187,7 +210,7 @@ useSeoMeta({
               </div>
             </section>
 
-            <CountdownDisplay :deadline="nextDeadline"/>
+            <CountdownDisplay :deadline="nextDeadline" :now="now" :live="live"/>
           </div>
         </div>
       </section>
@@ -205,6 +228,28 @@ useSeoMeta({
                 Les phases sont triées chronologiquement, avec un état visuel
                 clair pour distinguer ce qui est passé, actif ou à venir.
               </p>
+            </div>
+            <div class="fr-col-12 fr-col-md-4">
+              <ul class="fr-btns-group fr-btns-group--sm pt-agenda-actions">
+                <li>
+                  <a
+                      class="fr-btn fr-btn--secondary"
+                      :href="agendaSubscribeUrl"
+                      title="S’abonner au calendrier Parcoursup dans mon agenda"
+                  >
+                    S’abonner dans mon agenda
+                  </a>
+                </li>
+                <li>
+                  <a
+                      class="fr-btn fr-btn--tertiary"
+                      :href="agendaPath"
+                      :download="`parcoursup-${selectedCampaign.id}.ics`"
+                  >
+                    Télécharger les échéances (.ics)
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
 

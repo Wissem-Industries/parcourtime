@@ -3,7 +3,7 @@
     "id": "2025-2026",
     "label": "Campagne 2025-2026",
     "timezone": "Europe/Paris",
-    "lastUpdated": "2026-05-22",
+    "lastUpdated": "2026-11-09",
     "sources": [
       {
         "id": "calendrier-2026",
@@ -38,8 +38,8 @@
         "shortDescription": "Préparation du projet d’orientation, découverte des formations et ouverture de la carte Parcoursup.",
         "start": "2025-10-01T00:00:00+02:00",
         "end": "2026-01-18T23:59:59+01:00",
-        "displayDate": "Octobre 2025 à janvier 2026",
-        "certainty": "estimated",
+        "displayDate": "D’octobre 2025 à janvier 2026",
+        "certainty": "official",
         "sourceIds": ["calendrier-2026"],
         "milestones": [
           {
@@ -104,8 +104,8 @@
         "shortDescription": "Les établissements étudient les candidatures confirmées avant l’ouverture des admissions.",
         "start": "2026-04-02T00:00:00+02:00",
         "end": "2026-06-01T23:59:59+02:00",
-        "displayDate": "Avril à mai 2026",
-        "certainty": "estimated",
+        "displayDate": "Du 2 avril au 1er juin 2026",
+        "certainty": "official",
         "sourceIds": ["calendrier-2026"]
       },
       {
@@ -204,27 +204,40 @@
     "id": "2026-2027",
     "label": "Campagne 2026-2027",
     "timezone": "Europe/Paris",
-    "lastUpdated": "2026-09-26",
-    "sources": [],
+    "lastUpdated": "2026-11-09",
+    "sources": [
+      {
+        "id": "calendrier-2027",
+        "title": "Calendrier Parcoursup 2027",
+        "url": "https://www.parcoursup.gouv.fr/calendrier",
+        "retrievedAt": "2026-11-09"
+      },
+      {
+        "id": "calendrier-2027-pdf",
+        "title": "Calendrier Parcoursup 2027 (PDF)",
+        "url": "https://www.parcoursup.gouv.fr/sites/default/files/database/documents/2026-10/calendrier-parcoursup-2027-805_1.pdf",
+        "retrievedAt": "2026-11-09"
+      }
+    ],
     "phases": [
       {
         "id": "information",
         "order": 1,
         "title": "Je m’informe et découvre les formations",
-        "shortDescription": "Préparation du projet d’orientation et découverte des formations.",
+        "shortDescription": "Préparation du projet d’orientation, découverte des formations et ouverture de la carte Parcoursup.",
         "start": "2026-10-01T00:00:00+02:00",
         "end": "2027-01-17T23:59:59+01:00",
-        "displayDate": "D’octobre 2026 à mi-janvier 2027 (estimation)",
-        "certainty": "estimated",
-        "sourceIds": [],
+        "displayDate": "D’octobre 2026 à janvier 2027",
+        "certainty": "official",
+        "sourceIds": ["calendrier-2027"],
         "milestones": [
           {
             "id": "carte-formations",
-            "title": "Ouverture estimée de la carte des formations",
-            "date": "2026-12-16T00:00:00+01:00",
-            "displayDate": "Vers le 16 décembre 2026",
-            "certainty": "estimated",
-            "sourceIds": [],
+            "title": "Découverte de la carte des formations Parcoursup 2027",
+            "date": "2026-12-17T00:00:00+01:00",
+            "displayDate": "Jeudi 17 décembre 2026",
+            "certainty": "official",
+            "sourceIds": ["calendrier-2027"],
             "importance": "secondary"
           }
         ]
@@ -233,20 +246,29 @@
         "id": "voeux",
         "order": 2,
         "title": "Je m’inscris et je formule mes vœux",
-        "shortDescription": "Création du dossier candidat et formulation des vœux.",
+        "shortDescription": "Création du dossier candidat et formulation des vœux, sans obligation de les classer. Les portes ouvertes et salons d’orientation se tiennent tout au long du trimestre.",
         "start": "2027-01-18T00:00:00+01:00",
         "end": "2027-03-11T23:59:59+01:00",
-        "displayDate": "Vers le 18 janvier au 11 mars 2027",
-        "certainty": "estimated",
-        "sourceIds": [],
+        "displayDate": "Du lundi 18 janvier au jeudi 11 mars 2027",
+        "certainty": "official",
+        "sourceIds": ["calendrier-2027"],
         "milestones": [
           {
+            "id": "ouverture-inscriptions",
+            "title": "Ouverture des inscriptions et de la formulation des vœux",
+            "date": "2027-01-18T00:00:00+01:00",
+            "displayDate": "Lundi 18 janvier 2027",
+            "certainty": "official",
+            "sourceIds": ["calendrier-2027"],
+            "importance": "primary"
+          },
+          {
             "id": "dernier-jour-voeux",
-            "title": "Fin estimée de la formulation des vœux",
+            "title": "Dernier jour pour formuler les vœux",
             "date": "2027-03-11T23:59:59+01:00",
-            "displayDate": "Vers le 11 mars 2027",
-            "certainty": "estimated",
-            "sourceIds": [],
+            "displayDate": "Jeudi 11 mars 2027 à 23h59",
+            "certainty": "official",
+            "sourceIds": ["calendrier-2027"],
             "importance": "primary"
           }
         ]
@@ -255,20 +277,20 @@
         "id": "confirmation",
         "order": 3,
         "title": "Je finalise mon dossier et je confirme mes vœux",
-        "shortDescription": "Compléter le dossier et confirmer chaque vœu.",
+        "shortDescription": "Compléter les éléments demandés par les formations et confirmer chaque vœu.",
         "start": "2027-03-12T00:00:00+01:00",
         "end": "2027-04-01T23:59:59+02:00",
-        "displayDate": "Jusqu’au début avril 2027 (estimation)",
-        "certainty": "estimated",
-        "sourceIds": [],
+        "displayDate": "Jusqu’au jeudi 1er avril 2027 à 23h59",
+        "certainty": "official",
+        "sourceIds": ["calendrier-2027"],
         "milestones": [
           {
             "id": "confirmation-voeux",
-            "title": "Fin estimée de la confirmation des vœux",
+            "title": "Dernier jour pour compléter le dossier et confirmer les vœux",
             "date": "2027-04-01T23:59:59+02:00",
-            "displayDate": "Vers le 1er avril 2027",
-            "certainty": "estimated",
-            "sourceIds": [],
+            "displayDate": "Jeudi 1er avril 2027 à 23h59",
+            "certainty": "official",
+            "sourceIds": ["calendrier-2027"],
             "importance": "primary"
           }
         ]
@@ -277,40 +299,59 @@
         "id": "examen",
         "order": 4,
         "title": "Les formations examinent les dossiers",
-        "shortDescription": "Les établissements étudient les candidatures confirmées.",
+        "shortDescription": "Les établissements étudient les candidatures confirmées avant l’ouverture des admissions.",
         "start": "2027-04-02T00:00:00+02:00",
         "end": "2027-05-31T23:59:59+02:00",
-        "displayDate": "Avril à mai 2027 (estimation)",
-        "certainty": "estimated",
-        "sourceIds": []
+        "displayDate": "Du 2 avril au 31 mai 2027",
+        "certainty": "official",
+        "sourceIds": ["calendrier-2027"]
       },
       {
         "id": "admission-principale",
         "order": 5,
         "title": "Je reçois les réponses des formations et je décide",
-        "shortDescription": "Les propositions d’admission arrivent progressivement.",
+        "shortDescription": "Les propositions d’admission arrivent progressivement et doivent être traitées dans les délais indiqués. Les délais de réponse sont suspendus pendant les épreuves écrites du baccalauréat.",
         "start": "2027-06-01T00:00:00+02:00",
         "end": "2027-07-10T23:59:59+02:00",
-        "displayDate": "Début juin à mi-juillet 2027 (estimation)",
-        "certainty": "estimated",
-        "sourceIds": [],
+        "displayDate": "Du mardi 1er juin au samedi 10 juillet 2027",
+        "certainty": "official",
+        "sourceIds": ["calendrier-2027"],
         "milestones": [
           {
             "id": "debut-admission",
-            "title": "Début estimé de la phase principale",
+            "title": "Début de la phase d’admission principale",
             "date": "2027-06-01T00:00:00+02:00",
-            "displayDate": "Vers le 1er juin 2027",
-            "certainty": "estimated",
-            "sourceIds": [],
+            "displayDate": "Mardi 1er juin 2027",
+            "certainty": "official",
+            "sourceIds": ["calendrier-2027"],
             "importance": "primary"
           },
           {
+            "id": "classement-attente",
+            "title": "Classement des vœux en attente",
+            "date": "2027-06-04T00:00:00+02:00",
+            "displayDate": "Du vendredi 4 au lundi 7 juin 2027",
+            "certainty": "official",
+            "sourceIds": ["calendrier-2027"],
+            "importance": "secondary"
+          },
+          {
+            "id": "resultats-bac",
+            "title": "Résultats du baccalauréat, puis inscription administrative",
+            "date": "2027-07-06T00:00:00+02:00",
+            "displayDate": "Mardi 6 juillet 2027",
+            "shortDescription": "Après les résultats, s’inscrire dans la formation acceptée.",
+            "certainty": "official",
+            "sourceIds": ["calendrier-2027"],
+            "importance": "secondary"
+          },
+          {
             "id": "fin-admission-principale",
-            "title": "Fin estimée de la phase principale",
+            "title": "Fin de la phase principale",
             "date": "2027-07-10T23:59:59+02:00",
-            "displayDate": "Vers le 10 juillet 2027",
-            "certainty": "estimated",
-            "sourceIds": [],
+            "displayDate": "Samedi 10 juillet 2027",
+            "certainty": "official",
+            "sourceIds": ["calendrier-2027"],
             "importance": "primary"
           }
         ]
@@ -319,29 +360,29 @@
         "id": "phase-complementaire",
         "order": 6,
         "title": "Phase d’admission complémentaire",
-        "shortDescription": "Formuler de nouveaux vœux dans les formations où il reste des places.",
+        "shortDescription": "Formuler de nouveaux vœux dans les formations qui disposent encore de places.",
         "start": "2027-06-10T00:00:00+02:00",
         "end": "2027-09-09T23:59:59+02:00",
-        "displayDate": "Mi-juin à début septembre 2027 (estimation)",
-        "certainty": "estimated",
-        "sourceIds": [],
+        "displayDate": "Du jeudi 10 juin au jeudi 9 septembre 2027",
+        "certainty": "official",
+        "sourceIds": ["calendrier-2027"],
         "milestones": [
           {
             "id": "debut-complementaire",
-            "title": "Début estimé de la phase complémentaire",
+            "title": "Début de la phase complémentaire",
             "date": "2027-06-10T00:00:00+02:00",
-            "displayDate": "Vers le 10 juin 2027",
-            "certainty": "estimated",
-            "sourceIds": [],
+            "displayDate": "Jeudi 10 juin 2027",
+            "certainty": "official",
+            "sourceIds": ["calendrier-2027"],
             "importance": "primary"
           },
           {
             "id": "fin-complementaire",
-            "title": "Fin estimée de la phase complémentaire",
+            "title": "Fin de la phase complémentaire",
             "date": "2027-09-09T23:59:59+02:00",
-            "displayDate": "Vers le 9 septembre 2027",
-            "certainty": "estimated",
-            "sourceIds": [],
+            "displayDate": "Jeudi 9 septembre 2027",
+            "certainty": "official",
+            "sourceIds": ["calendrier-2027"],
             "importance": "primary"
           }
         ]
