@@ -4,6 +4,29 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Added
+
+- Calendar export per campaign at `/agenda/<campagne>.ics`: subscription (`webcal://`) or download, one all-day event per key date, reminder the day before the main deadlines.
+- Source link on each phase card.
+- Data consistency tests (date order, source references) and iCalendar export tests.
+
+### Changed
+
+- Campaign 2026-2027 switched to the official Parcoursup 2027 calendar published in October 2026: every date is confirmed, with the bac results (6 July 2027) and the ranking of waiting-list wishes (4 to 7 June 2027) added. The "Période indicative" label is gone.
+- Campaign 2025-2026: the information and review phases are marked official, their bounds come from the published calendar.
+- The campaign start is no longer called "estimated" when its date is official; wording about estimates is shown only when a campaign still has some.
+- The data update date in the footer is written in French.
+- Sharing image regenerated from the official 2027 calendar.
+
+### Fixed
+
+- The `?campagne=` address now selects the campaign and follows the selector; the page announced shareable links without supporting them.
+- Prerendered page: the clock starts from the build time carried by the payload and switches to the real time after mount, so phase status and countdown no longer depend on the build date and hydration matches.
+- A single clock drives the page instead of two intervals.
+- The countdown no longer announces every second to screen readers.
+- Phase cards: the title and description were shown below the dates because of the DSFR card ordering.
+- "Hors calendrier" status shown as information instead of error.
+
 ## [1.1.4] - 2026-10-22
 
 ### Changed

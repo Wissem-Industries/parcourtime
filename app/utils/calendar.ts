@@ -17,6 +17,15 @@ const dateTimeFormatter = new Intl.DateTimeFormat('fr-FR', {
   timeStyle: 'short',
   timeZone: 'Europe/Paris',
 })
+
+// Parts only: the layout of a locale is not guaranteed with a reduced ICU (Alpine).
+const parisDayFormatter = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  timeZone: 'Europe/Paris',
+})
+
 const PRE_CAMPAIGN_WINDOW_MS = 30 * 24 * 60 * 60 * 1000
 
 export const parseDate = (value?: string) => {
@@ -89,7 +98,10 @@ export const getNextDeadline = (campaign: Campaign, now: Date) => {
   if (firstPhase && now < firstPhase.start) {
     return {
       id: `${firstPhase.phase.id}-start`,
-      title: 'Début estimé de la campagne',
+      title:
+        firstPhase.phase.certainty === 'official'
+          ? 'Début de la campagne'
+          : 'Début estimé de la campagne',
       date: firstPhase.start,
       displayDate: formatDateTime(firstPhase.start),
       phaseId: firstPhase.phase.id,
@@ -135,6 +147,16 @@ export const getCampaignProgress = (campaign: Campaign, now: Date) => {
 export const formatDate = (date: Date) => dayFormatter.format(date)
 
 export const formatDateTime = (date: Date) => dateTimeFormatter.format(date)
+
+/** Calendar day in Paris, as `YYYY-MM-DD`. */
+export const toParisDay = (date: Date) => {
+  const parts = Object.fromEntries(
+    parisDayFormatter.formatToParts(date).map((part) => [part.type, part.value]),
+  )
+  return `${parts.year}-${parts.month}-${parts.day}`
+}
+
+export const formatIsoDay = (day: string) => formatDate(new Date(`${day}T12:00:00Z`))
 
 export const formatPhaseRange = (phase: ParcoursupPhase) => {
   if (phase.displayDate) return phase.displayDate

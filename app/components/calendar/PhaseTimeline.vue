@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Campaign } from '~/types/parcoursup'
-import { sortPhases } from '~/utils/calendar'
+import { getSourceList, sortPhases } from '~/utils/calendar'
 
 const props = defineProps<{
   campaign: Campaign
@@ -17,6 +17,7 @@ const phases = computed(() => sortPhases(props.campaign.phases))
         :key="phase.id"
         :phase="phase"
         :now="now"
+        :sources="getSourceList(campaign, phase.sourceIds)"
     />
   </div>
 </template>
