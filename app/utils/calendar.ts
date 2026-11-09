@@ -18,7 +18,8 @@ const dateTimeFormatter = new Intl.DateTimeFormat('fr-FR', {
   timeZone: 'Europe/Paris',
 })
 
-const isoDayFormatter = new Intl.DateTimeFormat('en-CA', {
+// Parts only: the layout of a locale is not guaranteed with a reduced ICU (Alpine).
+const parisDayFormatter = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
   month: '2-digit',
   day: '2-digit',
@@ -148,7 +149,12 @@ export const formatDate = (date: Date) => dayFormatter.format(date)
 export const formatDateTime = (date: Date) => dateTimeFormatter.format(date)
 
 /** Calendar day in Paris, as `YYYY-MM-DD`. */
-export const toParisDay = (date: Date) => isoDayFormatter.format(date)
+export const toParisDay = (date: Date) => {
+  const parts = Object.fromEntries(
+    parisDayFormatter.formatToParts(date).map((part) => [part.type, part.value]),
+  )
+  return `${parts.year}-${parts.month}-${parts.day}`
+}
 
 export const formatIsoDay = (day: string) => formatDate(new Date(`${day}T12:00:00Z`))
 
