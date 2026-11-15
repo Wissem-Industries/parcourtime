@@ -5,7 +5,12 @@ const SITE = 'parcourtime.wissem.pro'
 const MAX_LINE_OCTETS = 75
 
 const escapeText = (value: string) =>
-  value.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n')
+  value
+    .replace(/\\/g, '\\\\')
+    .replace(/;/g, '\\;')
+    .replace(/,/g, '\\,')
+    .replace(/\r?\n/g, '\\n')
+    .replace(/\r/g, '')
 
 /** Folds a content line at 75 octets without splitting a UTF-8 character (RFC 5545, 3.1). */
 const fold = (line: string) => {
