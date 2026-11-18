@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.2.2] - 2026-11-18
+
 ### Added
 
 - Structured data (WebSite and WebApplication), web app manifest and touch icons.
