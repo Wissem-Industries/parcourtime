@@ -10,6 +10,7 @@ import {
   hasUnconfirmedDates,
 } from '~/utils/calendar'
 import { icsPath } from '~/utils/ics'
+import { buildStructuredData, pageDescription, pageTitle, SITE_URL } from '~/utils/seo'
 
 const route = useRoute()
 const router = useRouter()
@@ -80,13 +81,15 @@ watch(
 const defaultCampaign = getCampaignById(defaultCampaignId) ?? fallbackCampaign
 const socialImage = `https://parcourtime.wissem.pro/og.png?v=${defaultCampaign.lastUpdated}`
 
+const title = computed(() => pageTitle(selectedCampaign.value))
+const description = computed(() => pageDescription(selectedCampaign.value))
+
 useSeoMeta({
-  title: () => `ParcourTime - ${selectedCampaign.value.label}`,
-  description: () =>
-    `Compte à rebours et calendrier des phases Parcoursup pour ${selectedCampaign.value.label}.`,
-  ogTitle: () => `ParcourTime - ${selectedCampaign.value.label}`,
-  ogDescription: () =>
-    'Suivez les grandes échéances Parcoursup avec des dates centralisées et clairement qualifiées.',
+  title,
+  description,
+  robots: 'index, follow, max-image-preview:large',
+  ogTitle: title,
+  ogDescription: description,
   ogImage: socialImage,
   ogImageWidth: 1200,
   ogImageHeight: 630,
@@ -96,12 +99,21 @@ useSeoMeta({
   ogType: 'website',
   ogSiteName: 'ParcourTime',
   ogLocale: 'fr_FR',
-  ogUrl: 'https://parcourtime.wissem.pro',
+  ogUrl: SITE_URL,
   twitterCard: 'summary_large_image',
-  twitterTitle: () => `ParcourTime - ${selectedCampaign.value.label}`,
-  twitterDescription: () =>
-    `Compte à rebours et calendrier des phases Parcoursup pour ${selectedCampaign.value.label}.`,
+  twitterTitle: title,
+  twitterDescription: description,
   twitterImage: socialImage,
+})
+
+useHead({
+  script: [
+    {
+      key: 'structured-data',
+      type: 'application/ld+json',
+      textContent: () => JSON.stringify(buildStructuredData(defaultCampaign, campaignOptions)),
+    },
+  ],
 })
 </script>
 
@@ -183,7 +195,6 @@ useSeoMeta({
                   campaignProgress !== null && campaignProgressLabel !== null
                 "
                   class="pt-progress-card fr-mt-4w"
-                  :aria-label="`Progression du calendrier Parcoursup : ${campaignProgressLabel} pour cent`"
               >
                 <div class="pt-progress-card__header">
                   <p class="fr-text--sm fr-mb-0">Progression du calendrier</p>
@@ -193,6 +204,8 @@ useSeoMeta({
                 <div
                     class="pt-progress"
                     role="progressbar"
+                    aria-label="Progression du calendrier Parcoursup"
+                    :aria-valuetext="`${campaignProgressLabel} %`"
                     :aria-valuenow="Number(campaignProgress.toFixed(5))"
                     aria-valuemin="0"
                     aria-valuemax="100"

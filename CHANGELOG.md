@@ -4,6 +4,21 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Added
+
+- Structured data (WebSite and WebApplication), web app manifest and touch icons.
+- The sitemap gives the date of the last calendar update.
+
+### Changed
+
+- Page title and description name the Parcoursup year (« Calendrier Parcoursup 2027 »), and the canonical address matches the sitemap.
+- The stylesheet drops the DSFR utility sheet, whose 2,000 inline icons the site does not use: 49 kB compressed instead of 195 kB, same rendering.
+- Fonts, icons, the sharing image, the manifest and the calendar files have their own cache lifetime instead of Cloudflare's four hours.
+
+### Fixed
+
+- The calendar progress bar has an accessible name.
+
 ## [1.2.1] - 2026-11-15
 
 ### Security

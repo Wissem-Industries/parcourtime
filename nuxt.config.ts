@@ -6,7 +6,6 @@ export default defineNuxtConfig({
 
   css: [
     '@gouvfr/dsfr/dist/core/core.main.min.css',
-    '@gouvfr/dsfr/dist/utility/utility.main.min.css',
     '@gouvfr/dsfr/dist/scheme/scheme.min.css',
     '@gouvfr/dsfr/dist/component/alert/alert.main.min.css',
     '@gouvfr/dsfr/dist/component/badge/badge.main.min.css',
@@ -40,18 +39,12 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      title: 'ParcourTime - Calendrier Parcoursup 2027',
-      meta: [
-        {
-          name: 'description',
-          content:
-            'Suivez les échéances officielles Parcoursup 2027 avec un compte à rebours clair.',
-        },
-        { name: 'theme-color', content: '#000091' },
-      ],
+      meta: [{ name: 'theme-color', content: '#000091' }],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { rel: 'canonical', href: 'https://parcourtime.wissem.pro' },
+        { rel: 'icon', href: '/favicon.ico', sizes: '48x48' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+        { rel: 'manifest', href: '/site.webmanifest' },
+        { rel: 'canonical', href: 'https://parcourtime.wissem.pro/' },
       ],
       htmlAttrs: {
         lang: 'fr',
@@ -82,12 +75,21 @@ export default defineNuxtConfig({
         'permissions-policy': 'camera=(), microphone=(), geolocation=(), payment=()',
       },
     },
+    // Files of public/ have no version in their name: Cloudflare otherwise applies its own four hours.
+    '/fonts/**': { headers: { 'cache-control': 'public, max-age=31536000' } },
+    '/favicon.ico': { headers: { 'cache-control': 'public, max-age=604800' } },
+    '/apple-touch-icon.png': { headers: { 'cache-control': 'public, max-age=604800' } },
+    '/icon-192.png': { headers: { 'cache-control': 'public, max-age=604800' } },
+    '/icon-512.png': { headers: { 'cache-control': 'public, max-age=604800' } },
+    '/og.png': { headers: { 'cache-control': 'public, max-age=604800' } },
+    '/site.webmanifest': { headers: { 'cache-control': 'public, max-age=86400' } },
+    '/agenda/**': { headers: { 'cache-control': 'public, max-age=3600' } },
   },
 
   nitro: {
     preset: 'bun',
     prerender: {
-      routes: ['/', ...campaigns.map((campaign) => `/agenda/${campaign.id}.ics`)],
+      routes: ['/', '/sitemap.xml', ...campaigns.map((campaign) => `/agenda/${campaign.id}.ics`)],
       crawlLinks: true,
     },
   },
