@@ -6,7 +6,6 @@ export default defineNuxtConfig({
 
   css: [
     '@gouvfr/dsfr/dist/core/core.main.min.css',
-    '@gouvfr/dsfr/dist/utility/utility.main.min.css',
     '@gouvfr/dsfr/dist/scheme/scheme.min.css',
     '@gouvfr/dsfr/dist/component/alert/alert.main.min.css',
     '@gouvfr/dsfr/dist/component/badge/badge.main.min.css',
@@ -76,6 +75,14 @@ export default defineNuxtConfig({
         'permissions-policy': 'camera=(), microphone=(), geolocation=(), payment=()',
       },
     },
+    // Files of public/ have no version in their name: Cloudflare otherwise applies its own four hours.
+    '/fonts/**': { headers: { 'cache-control': 'public, max-age=31536000' } },
+    '/favicon.ico': { headers: { 'cache-control': 'public, max-age=604800' } },
+    '/apple-touch-icon.png': { headers: { 'cache-control': 'public, max-age=604800' } },
+    '/icon-*.png': { headers: { 'cache-control': 'public, max-age=604800' } },
+    '/og.png': { headers: { 'cache-control': 'public, max-age=604800' } },
+    '/site.webmanifest': { headers: { 'cache-control': 'public, max-age=86400' } },
+    '/agenda/**': { headers: { 'cache-control': 'public, max-age=3600' } },
   },
 
   nitro: {
