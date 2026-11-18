@@ -59,6 +59,31 @@ export default defineNuxtConfig({
     },
   },
 
+  // Nuxt inlines its payload and bootstrap scripts, hence 'unsafe-inline' for scripts; DSFR and Vue also set inline styles.
+  routeRules: {
+    '/**': {
+      headers: {
+        'content-security-policy': [
+          "default-src 'self'",
+          "script-src 'self' 'unsafe-inline'",
+          "style-src 'self' 'unsafe-inline'",
+          "img-src 'self' data:",
+          "font-src 'self' data:",
+          "connect-src 'self'",
+          "object-src 'none'",
+          "base-uri 'self'",
+          "form-action 'self'",
+          "frame-ancestors 'none'",
+        ].join('; '),
+        'strict-transport-security': 'max-age=31536000',
+        'x-content-type-options': 'nosniff',
+        'x-frame-options': 'DENY',
+        'referrer-policy': 'strict-origin-when-cross-origin',
+        'permissions-policy': 'camera=(), microphone=(), geolocation=(), payment=()',
+      },
+    },
+  },
+
   nitro: {
     preset: 'bun',
     prerender: {

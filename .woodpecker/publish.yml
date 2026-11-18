@@ -29,7 +29,7 @@ steps:
       - deployment-start
 
   - name: publish-image
-    image: woodpeckerci/plugin-kaniko:2.3.2
+    image: woodpeckerci/plugin-kaniko:2.3.4
     settings:
       registry: ghcr.io
       repo: wissem-industries/parcourtime

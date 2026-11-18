@@ -4,6 +4,18 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-11-15
+
+### Security
+
+- Security headers on every response: Content-Security-Policy, Strict-Transport-Security, X-Frame-Options, X-Content-Type-Options, Referrer-Policy and Permissions-Policy.
+- iCalendar export strips carriage returns from text values.
+
+### Changed
+
+- Dependencies updated (Vue 3.5.45, Nuxt Plausible 4.1.0, Nuxt test utils 4.4.0, Biome 2.6.8, Playwright 1.65.1) along with their transitive security fixes.
+- Bun 1.4.4 and Kaniko plugin 2.3.4 in the build and CI.
+
 ## [1.2.0] - 2026-11-09
 
 ### Added
@@ -61,6 +73,7 @@ All notable changes to this project are documented here. The format follows [Kee
 ## [1.0.0] - 2026-10-02
 
 First release under the shared versioning of the wissem.pro projects.
+
 - Parcoursup calendar: current phase, next deadline with countdown, campaign progress and every phase in order.
 - Campaigns from several years, selectable and shareable by URL.
 - Estimated dates of future campaigns marked as such, with sources for official dates.

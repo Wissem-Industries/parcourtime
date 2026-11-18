@@ -13,7 +13,7 @@ steps:
       - bun run check
 
   - name: container-dry-run
-    image: woodpeckerci/plugin-kaniko:2.3.2
+    image: woodpeckerci/plugin-kaniko:2.3.4
     settings:
       dry-run: true
       repo: wissem-industries/parcourtime
