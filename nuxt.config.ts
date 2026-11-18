@@ -40,18 +40,12 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      title: 'ParcourTime - Calendrier Parcoursup 2027',
-      meta: [
-        {
-          name: 'description',
-          content:
-            'Suivez les échéances officielles Parcoursup 2027 avec un compte à rebours clair.',
-        },
-        { name: 'theme-color', content: '#000091' },
-      ],
+      meta: [{ name: 'theme-color', content: '#000091' }],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { rel: 'canonical', href: 'https://parcourtime.wissem.pro' },
+        { rel: 'icon', href: '/favicon.ico', sizes: '48x48' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+        { rel: 'manifest', href: '/site.webmanifest' },
+        { rel: 'canonical', href: 'https://parcourtime.wissem.pro/' },
       ],
       htmlAttrs: {
         lang: 'fr',
@@ -87,7 +81,7 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'bun',
     prerender: {
-      routes: ['/', ...campaigns.map((campaign) => `/agenda/${campaign.id}.ics`)],
+      routes: ['/', '/sitemap.xml', ...campaigns.map((campaign) => `/agenda/${campaign.id}.ics`)],
       crawlLinks: true,
     },
   },

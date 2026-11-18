@@ -4,6 +4,19 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Added
+
+- Structured data (WebSite and WebApplication), web app manifest and touch icons.
+- The sitemap gives the date of the last calendar update.
+
+### Changed
+
+- Page title and description name the Parcoursup year (« Calendrier Parcoursup 2027 »), and the canonical address matches the sitemap.
+
+### Fixed
+
+- The calendar progress bar has an accessible name.
+
 ## [1.2.1] - 2026-11-15
 
 ### Security
